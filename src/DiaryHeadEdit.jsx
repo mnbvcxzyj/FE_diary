@@ -142,16 +142,9 @@ const weather = [
   { id: "sunny", desKr: "해 쨍쩅" },
 ];
 
-function DiaryHead() {
+function DiaryHead({ selectDate, onChange }) {
   //날짜
-  let d = new Date();
-  let todayDate = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
-    .toISOString()
-    .slice(0, 10);
-  const [date, setDate] = useState(todayDate);
-  const onChange = (event) => {
-    setDate(event.target.value);
-  };
+
   //아이콘
   const [saveWeather, setSaveWeather] = useState("sunny");
   const [show, setShow] = useState(false);
@@ -189,7 +182,7 @@ function DiaryHead() {
     <DiaryHeader>
       <DiaryInfo>
         <InfoDate>
-          <DateInput type="date" value={date} onChange={onChange} />
+          <DateInput type="date" value={selectDate} onChange={onChange} />
         </InfoDate>
         <InfoIcon>
           <IconImg

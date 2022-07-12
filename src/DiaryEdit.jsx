@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import DiaryHead from "./DiaryHead";
+import DiaryHeadEdit from "./DiaryHeadEdit";
 
 const DiarySection = styled.div`
   padding: 20px;
@@ -35,10 +35,10 @@ const ImgDiv = styled.div`
   right: 0px;
 `;
 
-function DiaryImg({ selectDate, setSelectDate, onChange }) {
+function DiaryEdit({ selectDate, setSelectDate, onChange }) {
   return (
     <DiarySection>
-      <DiaryHead
+      <DiaryHeadEdit
         selectDate={selectDate}
         setSelectDate={setSelectDate}
         onChange={onChange}
@@ -89,4 +89,4 @@ function DiaryImg({ selectDate, setSelectDate, onChange }) {
   );
 }
 
-export default DiaryImg;
+export default DiaryEdit;

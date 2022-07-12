@@ -20,20 +20,24 @@ const DiaryInputs = styled.input`
   border-bottom: 1px solid #65a30d;
 `;
 
-function DiaryNonImg() {
+function DiaryNonImg({ selectDate, setSelectDate, onChange }) {
   return (
     <DiarySection>
-      <DiaryHead />
+      <DiaryHead
+        selectDate={selectDate}
+        setSelectDate={setSelectDate}
+        onChange={onChange}
+      />
       <DiaryInputsDiv>
-        <DiaryInputs maxLength="53" />
-        <DiaryInputs maxLength="53" />
-        <DiaryInputs maxLength="53" />
-        <DiaryInputs maxLength="53" />
-        <DiaryInputs maxLength="53" />
-        <DiaryInputs maxLength="53" />
-        <DiaryInputs maxLength="53" />
-        <DiaryInputs maxLength="53" />
-        <DiaryInputs maxLength="53" />
+        <DiaryInputs maxLength="33" />
+        <DiaryInputs maxLength="33" />
+        <DiaryInputs maxLength="33" />
+        <DiaryInputs maxLength="33" />
+        <DiaryInputs maxLength="33" />
+        <DiaryInputs maxLength="33" />
+        <DiaryInputs maxLength="33" />
+        <DiaryInputs maxLength="33" />
+        <DiaryInputs maxLength="33" />
       </DiaryInputsDiv>
     </DiarySection>
   );
