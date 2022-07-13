@@ -13,15 +13,14 @@ const DiaryInputsDiv = styled.div`
   position: relative;
 `;
 
-const DiaryInputs = styled.input`
+const DiaryInputs = styled.div`
   all: unset;
   width: 100%;
-  outline: none;
   height: 36px;
   border-bottom: 1px solid #65a30d;
 `;
 
-const DiaryShortInputs = styled.input`
+const DiaryShortInputs = styled.div`
   all: unset;
   width: 60%;
   outline: none;
@@ -44,15 +43,15 @@ function DiaryImg({ selectDate, setSelectDate, onChange }) {
         onChange={onChange}
       />
       <DiaryInputsDiv>
-        <DiaryInputs />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryShortInputs maxLength="20" />
-        <DiaryShortInputs maxLength="20" />
-        <DiaryShortInputs maxLength="20" />
-        <DiaryShortInputs maxLength="20" />
-        <DiaryShortInputs maxLength="20" />
+        <DiaryInputs>gg</DiaryInputs>
+        <DiaryInputs>gg</DiaryInputs>
+        <DiaryInputs>gg</DiaryInputs>
+        <DiaryInputs>gg</DiaryInputs>
+        <DiaryShortInputs>gg</DiaryShortInputs>
+        <DiaryShortInputs>g</DiaryShortInputs>
+        <DiaryShortInputs>gg</DiaryShortInputs>
+        <DiaryShortInputs>ggg</DiaryShortInputs>
+        <DiaryShortInputs>gg</DiaryShortInputs>
         <ImgDiv>
           <svg
             width="154"

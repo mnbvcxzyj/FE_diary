@@ -12,7 +12,7 @@ const DiaryInputsDiv = styled.div`
   flex-direction: column;
 `;
 
-const DiaryInputs = styled.input`
+const DiaryInputs = styled.div`
   all: unset;
   width: 100%;
   outline: none;
@@ -29,15 +29,15 @@ function DiaryNonImg({ selectDate, setSelectDate, onChange }) {
         onChange={onChange}
       />
       <DiaryInputsDiv>
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs>dfsfsdfdf</DiaryInputs>
       </DiaryInputsDiv>
     </DiarySection>
   );
