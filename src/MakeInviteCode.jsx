@@ -63,7 +63,7 @@ const AutoButton = styled.div`
 function MakeInviteCode() {
     <CodePopup>
         <Ment1>내 초대코드 생성하기</Ment1>
-        <InviteCode></InviteCode>
+        <InviteCode>ddds</InviteCode>
         <AutoButton>자동생성</AutoButton>
     </CodePopup>
 };
