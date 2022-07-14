@@ -17,7 +17,7 @@ const App = () => {
         onHide={()=>setCommentOn(false)}
       />
     <GlobalStyle/>
-    <Header/>
+    <Header/>     
     <div>
       <CommentBtn onClick={()=>setCommentOn(true)}>
         <img src={commentButton}/>

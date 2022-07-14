@@ -8,7 +8,7 @@ const CommentEditor = ({onCreate}) => {
     const [state, setState] = useState({
         author:"", 
         content:"",
-    });
+    }); 
 
     const handleChangeState = (e) => {
         setState({
