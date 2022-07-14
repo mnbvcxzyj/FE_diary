@@ -1,11 +1,11 @@
 import React from 'react';
 
-const DiaryPage = () => {
+function Add(props) {
     return (
         <div>
-            
+            No.3 Add.jsx
         </div>
     );
-};
+}
 
-export default DiaryPage;
+export default Add;
