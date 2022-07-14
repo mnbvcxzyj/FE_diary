@@ -19,15 +19,9 @@ const DiaryInputs = styled.div`
   padding: 8px;
   border-bottom: 1px solid #65a30d;
   height: 20px;
-`;
-
-const DiaryShortInputs = styled.div`
-  all: unset;
-  width: 60%;
-  outline: none;
-  padding: 8px;
-  border-bottom: 1px solid #65a30d;
-  height: 20px;
+  &:nth-child(n + 4) {
+    width: 60%;
+  }
 `;
 
 const ImgDiv = styled.div`
@@ -36,24 +30,22 @@ const ImgDiv = styled.div`
   right: 0px;
 `;
 
-function DiaryImg({ selectDate, setSelectDate, onChange }) {
+function DiaryImg({ selectDate, setSelectDate, onChange, writtenData }) {
+  console.log(writtenData);
   return (
     <DiarySection>
       <DiaryHead
+        writtenData={writtenData}
         selectDate={selectDate}
         setSelectDate={setSelectDate}
         onChange={onChange}
       />
       <DiaryInputsDiv>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryShortInputs></DiaryShortInputs>
-        <DiaryShortInputs></DiaryShortInputs>
-        <DiaryShortInputs></DiaryShortInputs>
-        <DiaryShortInputs></DiaryShortInputs>
-        <DiaryShortInputs></DiaryShortInputs>
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((list) => (
+          <DiaryInputs style={{ color: writtenData.textColor }} key={list}>
+            {writtenData.text[list]}
+          </DiaryInputs>
+        ))}
         <ImgDiv>
           <svg
             width="154"

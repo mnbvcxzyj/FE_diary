@@ -101,15 +101,34 @@ const DiaryPage = ({ diaryPageData }) => {
   const onClick = () => {
     navigate("/diaryedit");
   };
+  // const [writtenDiary, setWrittenDiary] = useState([]);
+  // oppositeData.map((list, index) => writtenDiary.push(list.date));
+
   return (
     <DiaryAdd>
       <DiaryBox>
         {/* 상대방 일기 */}
-        <DiaryNonImg
-          selectDate={selectDate}
-          setSelectDate={setSelectDate}
-          onChange={onChange}
-        />
+        {oppositeData.map((writtenData) =>
+          writtenData.date === selectDate ? (
+            writtenData.img ? (
+              <DiaryImg
+                writtenData={writtenData}
+                selectDate={selectDate}
+                setSelectDate={setSelectDate}
+                onChange={onChange}
+              />
+            ) : (
+              <DiaryNonImg
+                writtenData={writtenData}
+                selectDate={selectDate}
+                setSelectDate={setSelectDate}
+                onChange={onChange}
+              />
+            )
+          ) : (
+            ""
+          )
+        )}
         <DiaryCenter>
           <DiaryCircleBox>
             <DiaryCircle />
@@ -132,11 +151,11 @@ const DiaryPage = ({ diaryPageData }) => {
           </DiaryCircleBox>
         </DiaryCenter>
         {/* 내 일기 */}
-        <DiaryImg
+        {/* <DiaryImg
           selectDate={selectDate}
           setSelectDate={setSelectDate}
           onChange={onChange}
-        />
+        /> */}
       </DiaryBox>
       <DiaryBtn>
         <DiaryLeftBtn onClick={onClickLeft}>

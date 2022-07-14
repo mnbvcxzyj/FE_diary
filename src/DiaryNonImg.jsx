@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DiaryHead from "./DiaryHead";
 
 const DiarySection = styled.div`
   padding: 20px;
   width: 520px;
+  background-size: cover;
 `;
 
 const DiaryInputsDiv = styled.div`
@@ -21,24 +22,28 @@ const DiaryInputs = styled.div`
   height: 20px;
 `;
 
-function DiaryNonImg({ selectDate, setSelectDate, onChange }) {
+function DiaryNonImg({ selectDate, setSelectDate, onChange, writtenData }) {
+  const [template, setTemplate] = useState("");
   return (
-    <DiarySection>
+    <DiarySection
+      style={{
+        backgroundImage: `url(${require(`./img/template/template${String(
+          writtenData.template
+        ).padStart(2, 0)}.png`)})`,
+      }}
+    >
       <DiaryHead
+        writtenData={writtenData}
         selectDate={selectDate}
         setSelectDate={setSelectDate}
         onChange={onChange}
       />
       <DiaryInputsDiv>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
-        <DiaryInputs></DiaryInputs>
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((list) => (
+          <DiaryInputs style={{ color: writtenData.textColor }} key={list}>
+            {writtenData.text[list]}
+          </DiaryInputs>
+        ))}
       </DiaryInputsDiv>
     </DiarySection>
   );

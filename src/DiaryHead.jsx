@@ -60,7 +60,7 @@ const IconImg = styled.img`
   height: 20px;
 `;
 
-function DiaryHead({ selectDate, onChange }) {
+function DiaryHead({ selectDate, onChange, writtenData }) {
   return (
     <DiaryHeader>
       <DiaryInfo>
@@ -68,10 +68,10 @@ function DiaryHead({ selectDate, onChange }) {
           <DateInput type="date" value={selectDate} onChange={onChange} />
         </InfoDate>
         <InfoIcon>
-          <IconImg src={require(`./img/weather/sunny.png`)} />
+          <IconImg src={require(`./img/weather/${writtenData.weather}.png`)} />
         </InfoIcon>
         <InfoIcon>
-          <IconImg src={require(`./img/emotion/happy.png`)} />
+          <IconImg src={require(`./img/emotion/${writtenData.emotion}.png`)} />
         </InfoIcon>
         <InfoMusic>
           <IconImg src={song} />
@@ -79,7 +79,7 @@ function DiaryHead({ selectDate, onChange }) {
       </DiaryInfo>
       <DiaryTitle>
         <TitleText>제목</TitleText>
-        <TitleInputDiv></TitleInputDiv>
+        <TitleInputDiv>{writtenData.title}</TitleInputDiv>
       </DiaryTitle>
     </DiaryHeader>
   );
