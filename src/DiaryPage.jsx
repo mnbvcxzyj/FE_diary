@@ -78,7 +78,9 @@ const DiaryEdit = styled.div`
 
 let today = new Date();
 
-const DiaryPage = () => {
+const DiaryPage = ({ diaryPageData }) => {
+  const userData = diaryPageData.user;
+  const oppositeData = diaryPageData.opposite;
   let todayDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
     .toISOString()
     .slice(0, 10);
@@ -102,6 +104,7 @@ const DiaryPage = () => {
   return (
     <DiaryAdd>
       <DiaryBox>
+        {/* 상대방 일기 */}
         <DiaryNonImg
           selectDate={selectDate}
           setSelectDate={setSelectDate}
@@ -128,6 +131,7 @@ const DiaryPage = () => {
             <DiaryCircle />
           </DiaryCircleBox>
         </DiaryCenter>
+        {/* 내 일기 */}
         <DiaryImg
           selectDate={selectDate}
           setSelectDate={setSelectDate}

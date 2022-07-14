@@ -18,6 +18,7 @@ const DiaryInputs = styled.div`
   width: 100%;
   padding: 8px;
   border-bottom: 1px solid #65a30d;
+  height: 20px;
 `;
 
 const DiaryShortInputs = styled.div`
@@ -26,6 +27,7 @@ const DiaryShortInputs = styled.div`
   outline: none;
   padding: 8px;
   border-bottom: 1px solid #65a30d;
+  height: 20px;
 `;
 
 const ImgDiv = styled.div`
@@ -43,15 +45,15 @@ function DiaryImg({ selectDate, setSelectDate, onChange }) {
         onChange={onChange}
       />
       <DiaryInputsDiv>
-        <DiaryInputs>gg</DiaryInputs>
-        <DiaryInputs>gg</DiaryInputs>
-        <DiaryInputs>gg</DiaryInputs>
-        <DiaryInputs>gg</DiaryInputs>
-        <DiaryShortInputs>gg</DiaryShortInputs>
-        <DiaryShortInputs>g</DiaryShortInputs>
-        <DiaryShortInputs>gg</DiaryShortInputs>
-        <DiaryShortInputs>ggg</DiaryShortInputs>
-        <DiaryShortInputs>gg</DiaryShortInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryShortInputs></DiaryShortInputs>
+        <DiaryShortInputs></DiaryShortInputs>
+        <DiaryShortInputs></DiaryShortInputs>
+        <DiaryShortInputs></DiaryShortInputs>
+        <DiaryShortInputs></DiaryShortInputs>
         <ImgDiv>
           <svg
             width="154"

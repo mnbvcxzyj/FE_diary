@@ -40,6 +40,23 @@ const InfoMusic = styled.div`
   display: flex;
   cursor: pointer;
 `;
+
+const MusicInput = styled.input`
+  width: 0;
+  height: 0;
+`;
+
+const MusicValue = styled.div`
+  padding: 4px 10px;
+  background: #e4ffb8;
+  border-radius: 10px;
+`;
+
+const MusicLabel = styled.label`
+  display: flex;
+  align-items: center;
+`;
+
 const DiaryTitle = styled.div`
   display: flex;
   gap: 10px;
@@ -208,6 +225,10 @@ function DiaryHeadEdit() {
   const clickMusicClose = () => {
     setShowDetail(true);
   };
+  const [musicName, setMusicName] = useState("");
+  const onChangeMusic = (event) => {
+    setMusicName(event.target.files[0].name);
+  };
   return (
     <DiaryHeader>
       <DiaryInfo>
@@ -230,7 +251,17 @@ function DiaryHeadEdit() {
           <DetailInput placeholder="상세설명" />
         ) : (
           <InfoMusic onMouseOver={onHover} onMouseOut={onLeave}>
-            <IconImg src={song} />
+            <MusicLabel htmlFor="musicfile">
+              <IconImg src={song} />
+            </MusicLabel>
+            <MusicInput
+              id="musicfile"
+              type="file"
+              accept="audio/*"
+              onChange={onChangeMusic}
+            />
+            {musicName ? <MusicValue>{musicName}</MusicValue> : ""}
+
             {hover ? (
               <svg
                 width="10"

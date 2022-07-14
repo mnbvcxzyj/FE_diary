@@ -79,7 +79,7 @@ function DiaryHead({ selectDate, onChange }) {
       </DiaryInfo>
       <DiaryTitle>
         <TitleText>제목</TitleText>
-        <TitleInputDiv>fdfd</TitleInputDiv>
+        <TitleInputDiv></TitleInputDiv>
       </DiaryTitle>
     </DiaryHeader>
   );

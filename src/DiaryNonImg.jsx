@@ -18,6 +18,7 @@ const DiaryInputs = styled.div`
   outline: none;
   padding: 8px;
   border-bottom: 1px solid #65a30d;
+  height: 20px;
 `;
 
 function DiaryNonImg({ selectDate, setSelectDate, onChange }) {
@@ -29,15 +30,15 @@ function DiaryNonImg({ selectDate, setSelectDate, onChange }) {
         onChange={onChange}
       />
       <DiaryInputsDiv>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
-        <DiaryInputs>dfsfsdfdf</DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
+        <DiaryInputs></DiaryInputs>
       </DiaryInputsDiv>
     </DiarySection>
   );
