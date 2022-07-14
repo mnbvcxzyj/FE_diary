@@ -16,7 +16,7 @@ const DiaryInputs = styled.div`
   all: unset;
   width: 100%;
   outline: none;
-  height: 36px;
+  padding: 8px;
   border-bottom: 1px solid #65a30d;
 `;
 
