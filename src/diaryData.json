@@ -9,7 +9,7 @@
         "text": ["initiative", "", "안녕", "", "어캐할따", "", "", "뭐지", ""],
         "textColor": "#ffffff",
         "title": "Cookley",
-        "template": 9,
+        "template": "",
         "img": "https://ifh.cc/g/VCnYGm.jpg"
       },
       {
@@ -20,7 +20,7 @@
         "text": ["utilisation", "", "", "", "", "", "지금 3시야", "", "힘들어"],
         "textColor": "#000000",
         "title": "Y-find",
-        "template": 8,
+        "template": 7,
         "img": ""
       },
       {
@@ -41,7 +41,7 @@
         ],
         "textColor": "#ffffff",
         "title": "Bamity",
-        "template": 6,
+        "template": 5,
         "img": ""
       }
     ],
@@ -63,7 +63,7 @@
           ""
         ],
         "textColor": "#000000",
-        "title": "Cookley",
+        "title": "달달 무슨달",
         "template": 10,
         "img": ""
       },
@@ -89,7 +89,7 @@
         "img": ""
       },
       {
-        "date": "2022-07-19",
+        "date": "2022-07-20",
         "weather": "fog",
         "emotion": "present",
         "detail": { "music": "", "detail": "자고싶" },
@@ -106,7 +106,7 @@
         ],
         "textColor": "#000000",
         "title": "Bamity",
-        "template": "7",
+        "template": 8,
         "img": "https://ifh.cc/g/yz53W2.jpg"
       }
     ]

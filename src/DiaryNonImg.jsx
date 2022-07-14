@@ -22,22 +22,18 @@ const DiaryInputs = styled.div`
   height: 20px;
 `;
 
-function DiaryNonImg({ selectDate, setSelectDate, onChange, writtenData }) {
-  const [template, setTemplate] = useState("");
+function DiaryNonImg({ writtenData }) {
   return (
     <DiarySection
       style={{
-        backgroundImage: `url(${require(`./img/template/template${String(
-          writtenData.template
-        ).padStart(2, 0)}.png`)})`,
+        backgroundImage: writtenData.template
+          ? `url(${require(`./img/template/template${String(
+              writtenData.template
+            ).padStart(2, 0)}.png`)})`
+          : "",
       }}
     >
-      <DiaryHead
-        writtenData={writtenData}
-        selectDate={selectDate}
-        setSelectDate={setSelectDate}
-        onChange={onChange}
-      />
+      <DiaryHead writtenData={writtenData} />
       <DiaryInputsDiv>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((list) => (
           <DiaryInputs style={{ color: writtenData.textColor }} key={list}>

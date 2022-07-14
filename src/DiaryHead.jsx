@@ -25,7 +25,7 @@ const InfoDate = styled.div`
   padding-right: 15px;
 `;
 
-const DateInput = styled.input`
+const DateInput = styled.div`
   all: unset;
 `;
 
@@ -60,12 +60,12 @@ const IconImg = styled.img`
   height: 20px;
 `;
 
-function DiaryHead({ selectDate, onChange, writtenData }) {
+function DiaryHead({ writtenData }) {
   return (
     <DiaryHeader>
       <DiaryInfo>
         <InfoDate>
-          <DateInput type="date" value={selectDate} onChange={onChange} />
+          <DateInput>{writtenData.date}</DateInput>
         </InfoDate>
         <InfoIcon>
           <IconImg src={require(`./img/weather/${writtenData.weather}.png`)} />

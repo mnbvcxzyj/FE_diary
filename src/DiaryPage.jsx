@@ -79,55 +79,41 @@ const DiaryEdit = styled.div`
 let today = new Date();
 
 const DiaryPage = ({ diaryPageData }) => {
-  const userData = diaryPageData.user;
   const oppositeData = diaryPageData.opposite;
-  let todayDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
-    .toISOString()
-    .slice(0, 10);
-  const [selectDate, setSelectDate] = useState(todayDate);
-  const onChange = (event) => {
-    today = new Date(event.target.value);
-    setSelectDate(event.target.value);
-  };
+  const oppositeDataLast = diaryPageData.opposite.length;
+  const [currentPage, setCurrentPage] = useState(0);
+  const writtenData = oppositeData[currentPage];
+  const [showLeftBtn, setShowLeftBtn] = useState(false);
+  const [showRightBtn, setShowRightBtn] = useState(false);
   const onClickLeft = () => {
-    today = new Date(today.setDate(today.getDate() - 1, 1));
-    setSelectDate(today.toISOString().slice(0, 10));
+    if (currentPage >= 0) {
+      if (currentPage === 0) {
+        setShowLeftBtn(false);
+      } else {
+        setCurrentPage((pg) => pg - 1);
+      }
+    }
   };
   const onClickRight = () => {
-    today = new Date(today.setDate(today.getDate() + 1, 1));
-    setSelectDate(today.toISOString().slice(0, 10));
+    if (currentPage < oppositeDataLast - 1) {
+      setCurrentPage((pg) => pg + 1);
+      setShowLeftBtn(true);
+    }
   };
   const navigate = useNavigate();
   const onClick = () => {
     navigate("/diaryedit");
   };
-  // const [writtenDiary, setWrittenDiary] = useState([]);
-  // oppositeData.map((list, index) => writtenDiary.push(list.date));
-
+  const userData = diaryPageData.user;
+  const myData = userData[currentPage];
   return (
     <DiaryAdd>
       <DiaryBox>
         {/* 상대방 일기 */}
-        {oppositeData.map((writtenData) =>
-          writtenData.date === selectDate ? (
-            writtenData.img ? (
-              <DiaryImg
-                writtenData={writtenData}
-                selectDate={selectDate}
-                setSelectDate={setSelectDate}
-                onChange={onChange}
-              />
-            ) : (
-              <DiaryNonImg
-                writtenData={writtenData}
-                selectDate={selectDate}
-                setSelectDate={setSelectDate}
-                onChange={onChange}
-              />
-            )
-          ) : (
-            ""
-          )
+        {writtenData.img ? (
+          <DiaryImg writtenData={writtenData} />
+        ) : (
+          <DiaryNonImg writtenData={writtenData} />
         )}
         <DiaryCenter>
           <DiaryCircleBox>
@@ -151,27 +137,33 @@ const DiaryPage = ({ diaryPageData }) => {
           </DiaryCircleBox>
         </DiaryCenter>
         {/* 내 일기 */}
-        {/* <DiaryImg
-          selectDate={selectDate}
-          setSelectDate={setSelectDate}
-          onChange={onChange}
-        /> */}
+        {myData.img ? (
+          <DiaryImg writtenData={myData} />
+        ) : (
+          <DiaryNonImg writtenData={myData} />
+        )}
       </DiaryBox>
       <DiaryBtn>
-        <DiaryLeftBtn onClick={onClickLeft}>
-          <svg
-            width="25"
-            height="40"
-            viewBox="0 0 25 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1.74423 23.6029C-0.299937 21.6359 -0.299939 18.3641 1.74423 16.3971L16.5331 2.1665C19.7096 -0.89011 25 1.36108 25 5.76938L25 34.2306C25 38.6389 19.7096 40.8901 16.5331 37.8335L1.74423 23.6029Z"
-              fill="#BAA373"
-            />
-          </svg>
-        </DiaryLeftBtn>
+        {showLeftBtn ? (
+          <DiaryLeftBtn onClick={onClickLeft}>
+            {" "}
+            <svg
+              width="25"
+              height="40"
+              viewBox="0 0 25 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.74423 23.6029C-0.299937 21.6359 -0.299939 18.3641 1.74423 16.3971L16.5331 2.1665C19.7096 -0.89011 25 1.36108 25 5.76938L25 34.2306C25 38.6389 19.7096 40.8901 16.5331 37.8335L1.74423 23.6029Z"
+                fill="#BAA373"
+              />
+            </svg>
+          </DiaryLeftBtn>
+        ) : (
+          ""
+        )}
+
         <DiaryRightBtn onClick={onClickRight}>
           <svg
             width="25"
