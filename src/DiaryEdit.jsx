@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DiaryHeadEdit from "./DiaryHeadEdit";
+import DiaryTemplate from "./DiaryTemplate";
+
+const DiaryEd = styled.div`
+  margin-top: 40px;
+  display: flex;
+`;
+
+const DiaryEditBox = styled.div`
+  background-color: rgb(200 228 153 / 40%);
+  border-radius: 15px;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  margin-left: 75px;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
 
 const DiarySection = styled.div`
   padding: 20px;
@@ -31,61 +48,132 @@ const DiaryShortInputs = styled.input`
 
 const ImgDiv = styled.div`
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 0;
+  right: 0;
+  display: flex;
 `;
 
-function DiaryEdit({ selectDate, setSelectDate, onChange }) {
+const DiaryCenter = styled.div`
+  display: flex;
+`;
+
+const DiaryCircle = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f4ffe2;
+`;
+
+const DiaryCircleBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`;
+
+const FileInput = styled.input`
+  width: 0;
+  height: 0;
+  padding: 0;
+`;
+
+const CloseBtn = styled.div`
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background-image: url(${require("./img/close.png")});
+  background-size: contain;
+  &:hover {
+    background-image: url(${require("./img/hoverClose.png")});
+  }
+`;
+
+function DiaryEdit() {
+  const [changeImg, setChangeImg] = useState();
+  const [clickImg, setClickImg] = useState(false);
+  const [imgFile, setImgFile] = useState("");
+  const [changeFc, setChangeFc] = useState(false);
+  const style = {
+    backgroundImage: changeImg
+      ? `url(${require(`./img/template/${changeImg}.png`)})`
+      : "",
+  };
+  const onClick = () => {
+    setImgFile("");
+    setClickImg(false);
+  };
+
+  const onChange = (event) => {
+    setImgFile(URL.createObjectURL(event.target.files[0]));
+    setClickImg(true);
+  };
+  // 글씨
+  const [fcColor, setFcColor] = useState("#000000");
+  const onClickContent = () => {
+    setChangeFc(true);
+  };
+
   return (
-    <DiarySection>
-      <DiaryHeadEdit
-        selectDate={selectDate}
-        setSelectDate={setSelectDate}
-        onChange={onChange}
+    <DiaryEd>
+      <DiaryEditBox style={style}>
+        <DiarySection>
+          <DiaryHeadEdit />
+          <DiaryInputsDiv>
+            <DiaryInputs
+              maxLength="33"
+              placeholder="내용을 입력해주세요"
+              onClick={onClickContent}
+              style={{ color: fcColor }}
+            />
+            <DiaryInputs maxLength="33" style={{ color: fcColor }} />
+            <DiaryInputs maxLength="33" style={{ color: fcColor }} />
+            <DiaryInputs maxLength="33" style={{ color: fcColor }} />
+            <DiaryShortInputs maxLength="20" style={{ color: fcColor }} />
+            <DiaryShortInputs maxLength="20" style={{ color: fcColor }} />
+            <DiaryShortInputs maxLength="20" style={{ color: fcColor }} />
+            <DiaryShortInputs maxLength="20" style={{ color: fcColor }} />
+            <DiaryShortInputs maxLength="20" style={{ color: fcColor }} />
+            <ImgDiv>
+              <label htmlFor="imgFile">
+                {imgFile ? (
+                  <img
+                    src={imgFile}
+                    width="152px"
+                    height="152px"
+                    style={{ objectFit: "contain" }}
+                  />
+                ) : (
+                  <img src={require(`./img/noimage.png`)} width="152px" />
+                )}
+              </label>
+              <FileInput
+                id="imgFile"
+                type="file"
+                accept="image/*"
+                onChange={onChange}
+              />
+              {clickImg ? <CloseBtn onClick={onClick}></CloseBtn> : ""}
+            </ImgDiv>
+          </DiaryInputsDiv>
+        </DiarySection>
+        <DiaryCenter>
+          <DiaryCircleBox>
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+          </DiaryCircleBox>
+        </DiaryCenter>
+      </DiaryEditBox>
+      <DiaryTemplate
+        setChangeImg={setChangeImg}
+        changeFc={changeFc}
+        fcColor={fcColor}
+        setFcColor={setFcColor}
       />
-      <DiaryInputsDiv>
-        <DiaryInputs />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryInputs maxLength="33" />
-        <DiaryShortInputs maxLength="20" />
-        <DiaryShortInputs maxLength="20" />
-        <DiaryShortInputs maxLength="20" />
-        <DiaryShortInputs maxLength="20" />
-        <DiaryShortInputs maxLength="20" />
-        <ImgDiv>
-          <svg
-            width="154"
-            height="154"
-            viewBox="0 0 154 154"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M134 1H20C9.50658 1 1 9.50658 1 20V134C1 135.065 1.08759 136.109 1.25583 137.126C2.74657 146.132 10.5712 153 20 153H134C144.494 153 153 144.494 153 134V97.8059V20C153 9.50658 144.494 1 134 1Z"
-              stroke="#65A30D"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M67.5 48.5C67.5 58.9937 58.9937 67.5 48.5 67.5C38.0066 67.5 29.5 58.9937 29.5 48.5C29.5 38.0066 38.0066 29.5 48.5 29.5C58.9937 29.5 67.5 38.0066 67.5 48.5Z"
-              stroke="#65A30D"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M1.25488 137.127L37.5515 100.83C44.0118 95.1776 53.4599 94.5591 60.6021 99.3205L65.4395 102.545C72.3232 107.134 81.3872 106.741 87.8481 101.573L113.005 81.4463C119.418 76.3163 128.349 75.9145 135.166 80.3111C135.921 80.7984 136.594 81.4017 137.229 82.0382L152.999 97.8072"
-              stroke="#65A30D"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </ImgDiv>
-      </DiaryInputsDiv>
-    </DiarySection>
+    </DiaryEd>
   );
 }
 

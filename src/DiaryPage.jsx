@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import DiaryImg from "./DiaryImg";
 import DiaryNonImg from "./DiaryNonImg";
+import { useNavigate, Link } from "react-router-dom";
 
 const DiaryAdd = styled.div`
   width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto 0;
   position: relative;
 `;
 
@@ -14,8 +15,6 @@ const DiaryBox = styled.div`
   height: 500px;
   background-color: #c8e499;
   border-radius: 15px;
-
-  margin-top: 48px;
   display: flex;
 `;
 
@@ -71,12 +70,21 @@ const DiaryComment = styled.div`
   margin-right: 12px;
   cursor: pointer;
 `;
+
+const DiaryEdit = styled.div`
+  cursor: pointer;
+  height: 42px;
+`;
+
 let today = new Date();
 
 const DiaryPage = () => {
-  let todayDate = today.toISOString().slice(0, 10);
+  let todayDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+    .toISOString()
+    .slice(0, 10);
   const [selectDate, setSelectDate] = useState(todayDate);
   const onChange = (event) => {
+    today = new Date(event.target.value);
     setSelectDate(event.target.value);
   };
   const onClickLeft = () => {
@@ -86,6 +94,10 @@ const DiaryPage = () => {
   const onClickRight = () => {
     today = new Date(today.setDate(today.getDate() + 1, 1));
     setSelectDate(today.toISOString().slice(0, 10));
+  };
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate("/diaryedit");
   };
   return (
     <DiaryAdd>
@@ -154,37 +166,44 @@ const DiaryPage = () => {
       </DiaryBtn>
       <DiaryFooter>
         <DiaryComment>comment</DiaryComment>
-        <svg
-          width="48"
-          height="45"
-          viewBox="0 0 48 45"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M5.10645 31.6595V39.8297H13.7573L35.3843 19.4042L41.8724 13.2765L33.2216 5.10632L26.7335 11.234L5.10645 31.6595Z"
-            stroke="#9B8962"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M35.3842 19.4041L26.7334 11.2339"
-            stroke="#9B8962"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <rect
-            x="1.5"
-            y="1.5"
-            width="45"
-            height="41.9362"
-            rx="11.5"
-            stroke="#BAA373"
-            strokeWidth="3"
-          />
-        </svg>
+        <Link
+          to={{
+            pathname: "/diaryedit",
+          }}
+        />
+        <DiaryEdit onClick={onClick}>
+          <svg
+            width="48"
+            height="45"
+            viewBox="0 0 48 45"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.10645 31.6595V39.8297H13.7573L35.3843 19.4042L41.8724 13.2765L33.2216 5.10632L26.7335 11.234L5.10645 31.6595Z"
+              stroke="#9B8962"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M35.3842 19.4041L26.7334 11.2339"
+              stroke="#9B8962"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <rect
+              x="1.5"
+              y="1.5"
+              width="45"
+              height="41.9362"
+              rx="11.5"
+              stroke="#BAA373"
+              strokeWidth="3"
+            />
+          </svg>
+        </DiaryEdit>
       </DiaryFooter>
     </DiaryAdd>
   );
