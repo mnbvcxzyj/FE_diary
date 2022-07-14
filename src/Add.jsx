@@ -85,7 +85,7 @@ const Add = (props) => {
     return (
         <CodePopup>
             <LogoIMG><img src = {logoIMG}/></LogoIMG>
-            <Ment1>초대코드를 입력하여 연결해주세요</Ment1>
+            <Ment1>초대코드를 입력하여 연결해주세요fh</Ment1>
             <NavLink to="/MakeInviteCode">
                 <SelectInvite1 onClick={make_invite_code}>초대 하실건가요?</SelectInvite1>
             </NavLink>
