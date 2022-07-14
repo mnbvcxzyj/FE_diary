@@ -142,7 +142,7 @@ const Rem = ({ items }) => {
                                     <Pic>
                                         <PicContentsTop>이랑 함께</PicContentsTop>
                                         <PicContentsLow>째 작성중</PicContentsLow>
-                                        <DiaryClick onClick={goWrite}>   일기 보러가기  </DiaryClick>
+                                        <DiaryClick onClick={goWrite}>일기 보러가기</DiaryClick>
                                     </Pic>
                                 </>} 
                              />
