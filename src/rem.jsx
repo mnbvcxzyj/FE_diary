@@ -151,7 +151,7 @@ const Rem = ({ items }) => {
                                 <AiOutlineCalendar size="40" color="black" onClick={goRem}>Back</AiOutlineCalendar>
                             </DiaryPost>
                             }/>
-                        </Routes>
+                        </Routes>  
                     
             </Main>
         </>
