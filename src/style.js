@@ -12,4 +12,8 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #f5fdef;
         font-family: "BMDOHYEON";
     }
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> 283c68e1a861788fb1e4ead6d9a57917f7aadff9
