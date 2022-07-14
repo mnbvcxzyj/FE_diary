@@ -4,7 +4,6 @@ import logoIMG from './img/logo1.png';
 import { useNavigate } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { NavLink, Link, Outlet } from "react-router-dom";
-import MakeInviteCode from './MakeInviteCode';
 
 const CodePopup = styled.div`
     position: absolute;
