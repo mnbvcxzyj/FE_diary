@@ -32,7 +32,7 @@ const CalendarContents = styled.div`
   top: 156px;
   left: 184px;
   border: 2px solid #9B8962;
-  border-radius: 5px;
+  border-radius: 5px; 
 `;
 
 const Pic = styled.div`
@@ -152,7 +152,7 @@ const Rem = ({ items }) => {
                             </DiaryPost>
                             }/>
                         </Routes>  
-                    
+                 
             </Main>
         </>
     );
