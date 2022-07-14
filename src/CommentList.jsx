@@ -8,6 +8,7 @@ const CommentList = ({commentList}) => {
                     <CommentItem key={it.id} {...it}/>
                 ))}
             </div>
+            <div></div>
         </div>
     );
 };

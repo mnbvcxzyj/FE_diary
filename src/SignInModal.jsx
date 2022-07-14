@@ -28,8 +28,8 @@ font-family: "BMDOHYEON";
 
 export const Logo = styled.div`
   position: relative;
-  width: 80px;
   height : 80px;
+  width: 80px;
   margin: 16px;
   margin-left: auto;
   margin-right: auto;

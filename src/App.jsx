@@ -23,7 +23,7 @@ const App = () => {
         <img src={commentButton}/>
       </CommentBtn>
     </div> */}
-    <Header/>
+    <Header></Header>
     {/*<Comment/>*/}
     </>
   );

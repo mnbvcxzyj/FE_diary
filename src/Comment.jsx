@@ -24,7 +24,7 @@ const App = () => {
     <GlobalStyle/>
     <div className="App">
       <CommentEditor onCreate={onCreate} />
-      <CommentList commentList={data}/>
+      <CommentList commentList={data}></CommentList>
     </div>
     </>
   );

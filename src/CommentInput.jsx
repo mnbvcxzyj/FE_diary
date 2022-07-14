@@ -87,14 +87,7 @@ const CommentInput = ({ onInsert }) => {
         },
         [value]
     );
-
-    const onChange = useCallback(
-        (e) => {
-            setValue(e.target.value)
-        },
-        [value]
-    )
-
+    
     const onSubmit = useCallback(
         e => {
             onInsert(value.name, value.content);

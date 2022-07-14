@@ -9,8 +9,8 @@ import { Modal, Button } from 'react-bootstrap';
 import styled from "styled-components";
 
 export const BgDiv = styled.div`
-width: 100%;
 height: 2000px;
+width: 100%;
 background-color: rgba(00, 00, 00, 0.5);
 `;
 

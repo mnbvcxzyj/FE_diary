@@ -8,6 +8,7 @@ const CommentItem = ({author, content, created_date, emotion, id}) => {
                 <br/>
             </div>
             <div className="content">{content}<br/><hr/></div>
+        <div></div>
         </div>
     );
 };
