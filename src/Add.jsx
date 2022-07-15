@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import logoIMG from './img/logo1.png';
-import { useNavigate } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
+import { Route, useNavigate } from 'react-router-dom';
 import { NavLink, Link, Outlet } from "react-router-dom";
+import { useState } from 'react';
+import MakeInviteCode from './MakeInviteCode';
+import AddRoute from './AddRoute';
 
 const CodePopup = styled.div`
     position: absolute;
@@ -75,20 +77,28 @@ const Add = (props) => {
 
     const navigate = useNavigate(props);
     //창 이동할때 navigate사용
+    const state = useState();
 
-    const make_invite_code = () => {
+    const goInvite = () => {
         navigate("/MakeInviteCode");
+    }
+    const invite = () => {
+        navigate('/WriteInviteCode');
     };
-    //useNavigate경로 설정
 
     return (
         <CodePopup>
             <LogoIMG><img src = {logoIMG}/></LogoIMG>
             <Ment1>초대코드를 입력하여 연결해주세요</Ment1>
-            <NavLink to="/MakeInviteCode">
-                <SelectInvite1 onClick={make_invite_code}>초대 하실건가요?</SelectInvite1>
-            </NavLink>
-            <SelectInvite2 onClick={() => {navigate("/WriteInviteCode");}}>초대 받으셨나요?</SelectInvite2>
+
+            <Link to='/MakeInviteCode'>
+                <SelectInvite1>초대 하실건가요?</SelectInvite1>
+            </Link>
+
+            <Link to='/WriteInviteCode'>
+                <SelectInvite2>초대 받으셨나요?</SelectInvite2>
+            </Link>
+
         </CodePopup>
     );
 };
