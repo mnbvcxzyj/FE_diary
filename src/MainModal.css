@@ -16,12 +16,12 @@
   position: absolute;
   width: 294px;
   height: 34px;
-  left: 63px;
+  left: 140px;
   top: 38px;
 
   font-weight: 400;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 19.68px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -31,7 +31,7 @@
   color: #77694c;
 }
 
-.albumImg {
+.albumImgFile {
   position: absolute;
   left: 190px;
   right: 45.24%;
@@ -40,11 +40,21 @@
   cursor: pointer;
 }
 
+.diaryImg {
+  position: absolute;
+  width: 240px;
+  height: 220px;
+  left: 90px;
+  top: 86px;
+
+  border-radius: 10px 10px 0px 0px;
+}
+
 .imgText {
   position: absolute;
   width: 103.25px;
   height: 17px;
-  left: 158.37px;
+  left: 169px;
   top: 373.07px;
 
   font-weight: 400;
@@ -55,6 +65,16 @@
   text-align: center;
 
   color: #77694c;
+}
+
+.diaryImgAlbum {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 5%;
+  right: 85%;
+  top: 84.55%;
+  bottom: 4.55%;
 }
 
 .modal > section {
@@ -73,22 +93,15 @@
   overflow: hidden;
 }
 
-.modal > section > main {
-  padding: 16px;
-  border-bottom: 1px solid #dee2e6;
-  border-top: 1px solid #dee2e6;
+.fileInputImg {
+  position: absolute;
+  left: 190px;
+  right: 45.24%;
+  top: 76.19%;
+  bottom: 14.51%;
+  cursor: pointer;
 }
-.modal > section > footer {
-  padding: 12px 16px;
-  text-align: right;
-}
-.modal > section > footer button {
-  padding: 6px 12px;
-  color: #fff;
-  background-color: #6c757d;
-  border-radius: 5px;
-  font-size: 13px;
-}
+
 .modal.openModal {
   display: flex;
   align-items: center;
