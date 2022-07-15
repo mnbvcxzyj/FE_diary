@@ -4,8 +4,11 @@ import DiaryHeadEdit from "./DiaryHeadEdit";
 import DiaryTemplate from "./DiaryTemplate";
 
 const DiaryEd = styled.div`
-  margin-top: 40px;
-  display: flex;
+margin: 0 auto;
+margin-top: 40px;
+display: flex;
+width: 1280px;
+}
 `;
 
 const DiaryEditBox = styled.div`
@@ -76,21 +79,29 @@ const FileInput = styled.input`
   padding: 0;
 `;
 
-const CloseBtn = styled.div`
+const AddBtn = styled.div`
   cursor: pointer;
   width: 24px;
   height: 24px;
-  background-image: url(${require("./img/close.png")});
+  background-image: url(${require("./img/add.png")});
   background-size: contain;
   &:hover {
-    background-image: url(${require("./img/hoverClose.png")});
+    background-image: url(${require("./img/hoverAdd.png")});
   }
+`;
+
+const DeleteBtn = styled.div`
+  background-image: url(${require("./img/closeBtn.png")});
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
 `;
 
 function DiaryEdit() {
   const [changeImg, setChangeImg] = useState();
   const [clickImg, setClickImg] = useState(false);
-  const [imgFile, setImgFile] = useState("");
+  const [imgFile, setImgFile] = useState(require("./img/noimage.png"));
   const [changeFc, setChangeFc] = useState(false);
   const style = {
     backgroundImage: changeImg
@@ -98,7 +109,7 @@ function DiaryEdit() {
       : "",
   };
   const onClick = () => {
-    setImgFile("");
+    setImgFile(require("./img/noimage.png"));
     setClickImg(false);
   };
 
@@ -133,25 +144,28 @@ function DiaryEdit() {
             <DiaryShortInputs maxLength="20" style={{ color: fcColor }} />
             <DiaryShortInputs maxLength="20" style={{ color: fcColor }} />
             <ImgDiv>
-              <label htmlFor="imgFile">
-                {imgFile ? (
-                  <img
-                    src={imgFile}
-                    width="152px"
-                    height="152px"
-                    style={{ objectFit: "contain" }}
-                  />
-                ) : (
-                  <img src={require(`./img/noimage.png`)} width="152px" />
-                )}
-              </label>
-              <FileInput
-                id="imgFile"
-                type="file"
-                accept="image/*"
-                onChange={onChange}
+              <img
+                src={imgFile}
+                width="152px"
+                height="152px"
+                style={{ objectFit: "contain" }}
               />
-              {clickImg ? <CloseBtn onClick={onClick}></CloseBtn> : ""}
+
+              {clickImg ? (
+                <DeleteBtn onClick={onClick}></DeleteBtn>
+              ) : (
+                <>
+                  <label htmlFor="imgFile">
+                    <AddBtn></AddBtn>
+                  </label>
+                  <FileInput
+                    id="imgFile"
+                    type="file"
+                    accept="image/*"
+                    onChange={onChange}
+                  />
+                </>
+              )}
             </ImgDiv>
           </DiaryInputsDiv>
         </DiarySection>

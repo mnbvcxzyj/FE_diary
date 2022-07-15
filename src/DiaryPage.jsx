@@ -18,15 +18,20 @@ const DiaryBox = styled.div`
   display: flex;
 `;
 
-const DiaryCenter = styled.div`
+const OppositePage = styled.div`
   display: flex;
+  padding-right: 20px;
+  background-size: cover;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-right: 1px solid #4d7c0f;
 `;
-
-const DiaryBar = styled.div`
-  width: 1px;
-  height: 498px;
-  background-color: #4d7c0f;
-  margin: 0 20px;
+const MyPage = styled.div`
+  display: flex;
+  padding-left: 20px;
+  background-size: cover;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 `;
 
 const DiaryCircle = styled.div`
@@ -63,10 +68,8 @@ const DiaryFooter = styled.div`
 `;
 
 const DiaryComment = styled.div`
-  background: #baa373;
   border-radius: 13px;
   color: #f4ffe2;
-  padding: 10px;
   margin-right: 12px;
   cursor: pointer;
 `;
@@ -75,9 +78,6 @@ const DiaryEdit = styled.div`
   cursor: pointer;
   height: 42px;
 `;
-
-let today = new Date();
-
 const DiaryPage = ({ diaryPageData }) => {
   const oppositeData = diaryPageData.opposite;
   const oppositeDataLast = diaryPageData.opposite.length;
@@ -87,7 +87,8 @@ const DiaryPage = ({ diaryPageData }) => {
   const [showRightBtn, setShowRightBtn] = useState(false);
   const onClickLeft = () => {
     if (currentPage > 0) {
-      setCurrentPage((pg) => pg - 1);}
+      setCurrentPage((pg) => pg - 1);
+    }
   };
   const onClickRight = () => {
     if (currentPage < oppositeDataLast - 1) {
@@ -104,12 +105,20 @@ const DiaryPage = ({ diaryPageData }) => {
     <DiaryAdd>
       <DiaryBox>
         {/* 상대방 일기 */}
-        {writtenData.img ? (
-          <DiaryImg writtenData={writtenData} />
-        ) : (
-          <DiaryNonImg writtenData={writtenData} />
-        )}
-        <DiaryCenter>
+        <OppositePage
+          style={{
+            backgroundImage: writtenData.template
+              ? `url(${require(`./img/template/template${String(
+                  writtenData.template
+                ).padStart(2, 0)}.png`)})`
+              : "",
+          }}
+        >
+          {writtenData.img ? (
+            <DiaryImg writtenData={writtenData} />
+          ) : (
+            <DiaryNonImg writtenData={writtenData} />
+          )}
           <DiaryCircleBox>
             <DiaryCircle />
             <DiaryCircle />
@@ -119,23 +128,35 @@ const DiaryPage = ({ diaryPageData }) => {
             <DiaryCircle />
             <DiaryCircle />
           </DiaryCircleBox>
-          <DiaryBar />
-          <DiaryCircleBox>
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-          </DiaryCircleBox>
-        </DiaryCenter>
+        </OppositePage>
+
+        {/* <DiaryBar> */}
         {/* 내 일기 */}
-        {myData.img ? (
-          <DiaryImg writtenData={myData} />
-        ) : (
-          <DiaryNonImg writtenData={myData} />
-        )}
+        <MyPage
+          style={{
+            backgroundImage: myData.template
+              ? `url(${require(`./img/template/template${String(
+                  myData.template
+                ).padStart(2, 0)}.png`)})`
+              : "",
+          }}
+        >
+          <DiaryCircleBox>
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+            <DiaryCircle />
+          </DiaryCircleBox>
+
+          {myData.img ? (
+            <DiaryImg writtenData={myData} />
+          ) : (
+            <DiaryNonImg writtenData={myData} />
+          )}
+        </MyPage>
       </DiaryBox>
       <DiaryBtn>
         {showLeftBtn ? (
@@ -174,7 +195,20 @@ const DiaryPage = ({ diaryPageData }) => {
         </DiaryRightBtn>
       </DiaryBtn>
       <DiaryFooter>
-        <DiaryComment>comment</DiaryComment>
+        <DiaryComment>
+          <svg
+            width="46"
+            height="41"
+            viewBox="0 0 46 41"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.0517578 0.269043V27.6164H7.96666V35.5286L20.3015 27.6164H38.4542V0.269043H0.0517578ZM40.2609 6.28052V9.72178H41.6105V29.2241H34.9726V34.4371L27.2727 29.4983L26.8479 29.2241H21.0435L15.68 32.6654H25.8344L35.763 39.0317L38.4138 40.7309V32.6654H45.0518V6.28052H40.2609Z"
+              fill="#77694C"
+            />
+          </svg>
+        </DiaryComment>
         <Link
           to={{
             pathname: "/diaryedit",

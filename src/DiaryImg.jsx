@@ -39,15 +39,7 @@ const Img = styled.img`
 
 function DiaryImg({ writtenData }) {
   return (
-    <DiarySection
-      style={{
-        backgroundImage: writtenData.template
-          ? `url(${require(`./img/template/template${String(
-              writtenData.template
-            ).padStart(2, 0)}.png`)})`
-          : "",
-      }}
-    >
+    <DiarySection>
       <DiaryHead writtenData={writtenData} />
       <DiaryInputsDiv>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((list) => (

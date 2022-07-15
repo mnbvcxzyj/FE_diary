@@ -25,13 +25,7 @@ const DiaryInputs = styled.div`
 function DiaryNonImg({ writtenData }) {
   return (
     <DiarySection
-      style={{
-        backgroundImage: writtenData.template
-          ? `url(${require(`./img/template/template${String(
-              writtenData.template
-            ).padStart(2, 0)}.png`)})`
-          : "",
-      }}
+
     >
       <DiaryHead writtenData={writtenData} />
       <DiaryInputsDiv>
