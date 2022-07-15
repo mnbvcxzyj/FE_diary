@@ -38,7 +38,13 @@ const InfoIcon = styled.div`
 const InfoMusic = styled.div`
   padding-left: 15px;
   display: flex;
+  gap: 10px;
 `;
+
+const InfoDes = styled.div`
+  padding-left: 15px;
+`;
+
 const DiaryTitle = styled.div`
   display: flex;
   gap: 10px;
@@ -73,9 +79,11 @@ function DiaryHead({ writtenData }) {
         <InfoIcon>
           <IconImg src={require(`./img/emotion/${writtenData.emotion}.png`)} />
         </InfoIcon>
-        <InfoMusic>
+        {writtenData.detail.music?  <InfoMusic>
           <IconImg src={song} />
-        </InfoMusic>
+          {writtenData.detail.music}
+        </InfoMusic>:<InfoDes>{writtenData.detail.des}</InfoDes>}
+
       </DiaryInfo>
       <DiaryTitle>
         <TitleText>제목</TitleText>

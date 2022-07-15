@@ -83,21 +83,15 @@ const DiaryPage = ({ diaryPageData }) => {
   const oppositeDataLast = diaryPageData.opposite.length;
   const [currentPage, setCurrentPage] = useState(0);
   const writtenData = oppositeData[currentPage];
-  const [showLeftBtn, setShowLeftBtn] = useState(false);
+  const [showLeftBtn, setShowLeftBtn] = useState(true);
   const [showRightBtn, setShowRightBtn] = useState(false);
   const onClickLeft = () => {
-    if (currentPage >= 0) {
-      if (currentPage === 0) {
-        setShowLeftBtn(false);
-      } else {
-        setCurrentPage((pg) => pg - 1);
-      }
-    }
+    if (currentPage > 0) {
+      setCurrentPage((pg) => pg - 1);}
   };
   const onClickRight = () => {
     if (currentPage < oppositeDataLast - 1) {
       setCurrentPage((pg) => pg + 1);
-      setShowLeftBtn(true);
     }
   };
   const navigate = useNavigate();
