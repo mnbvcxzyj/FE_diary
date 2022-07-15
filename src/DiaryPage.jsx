@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import DiaryImg from "./DiaryImg";
 import DiaryNonImg from "./DiaryNonImg";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const DiaryAdd = styled.div`
+const DiaryRecord = styled.div`
   width: 1200px;
   margin: 40px auto 0;
   position: relative;
@@ -18,7 +18,7 @@ const DiaryBox = styled.div`
   display: flex;
 `;
 
-const OppositePage = styled.div`
+const OppositePage = styled.section`
   display: flex;
   padding-right: 20px;
   background-size: cover;
@@ -26,7 +26,8 @@ const OppositePage = styled.div`
   border-bottom-left-radius: 15px;
   border-right: 1px solid #4d7c0f;
 `;
-const MyPage = styled.div`
+
+const MyPage = styled.section`
   display: flex;
   padding-left: 20px;
   background-size: cover;
@@ -47,13 +48,13 @@ const DiaryCircleBox = styled.div`
   justify-content: space-evenly;
 `;
 
-const DiaryBtn = styled.div``;
 const DiaryRightBtn = styled.div`
   position: absolute;
   top: 42.5%;
   right: -35px;
   cursor: pointer;
 `;
+
 const DiaryLeftBtn = styled.div`
   position: absolute;
   top: 42.5%;
@@ -78,55 +79,46 @@ const DiaryEdit = styled.div`
   cursor: pointer;
   height: 42px;
 `;
+
 const DiaryPage = ({ diaryPageData }) => {
   const oppositeData = diaryPageData.opposite;
+  const userData = diaryPageData.user;
   const oppositeDataLast = diaryPageData.opposite.length;
   const [currentPage, setCurrentPage] = useState(0);
-  const writtenData = oppositeData[currentPage];
-  const [showLeftBtn, setShowLeftBtn] = useState(true);
-  const [showRightBtn, setShowRightBtn] = useState(false);
+  const myData = userData[currentPage];
+  const opData = oppositeData[currentPage];
   const onClickLeft = () => {
-    if (currentPage > 0) {
-      setCurrentPage((pg) => pg - 1);
-    }
+    setCurrentPage((pg) => (currentPage > 0 ? pg - 1 : ""));
   };
   const onClickRight = () => {
-    if (currentPage < oppositeDataLast - 1) {
-      setCurrentPage((pg) => pg + 1);
-    }
+    setCurrentPage((pg) => (currentPage < oppositeDataLast - 1 ? pg + 1 : ""));
   };
   const navigate = useNavigate();
   const onClick = () => {
-    navigate("/diaryedit");
+    navigate("/diaryadd");
   };
-  const userData = diaryPageData.user;
-  const myData = userData[currentPage];
   return (
-    <DiaryAdd>
+    <DiaryRecord>
       <DiaryBox>
         {/* 상대방 일기 */}
         <OppositePage
           style={{
-            backgroundImage: writtenData.template
+            backgroundImage: opData.template
               ? `url(${require(`./img/template/template${String(
-                  writtenData.template
+                  opData.template
                 ).padStart(2, 0)}.png`)})`
               : "",
           }}
         >
-          {writtenData.img ? (
-            <DiaryImg writtenData={writtenData} />
+          {opData.img ? (
+            <DiaryImg writtenData={opData} />
           ) : (
-            <DiaryNonImg writtenData={writtenData} />
+            <DiaryNonImg writtenData={opData} />
           )}
           <DiaryCircleBox>
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
+            {[0, 1, 2, 3, 4, 5, 6].map((num) => (
+              <DiaryCircle key={num} />
+            ))}
           </DiaryCircleBox>
         </OppositePage>
 
@@ -142,15 +134,10 @@ const DiaryPage = ({ diaryPageData }) => {
           }}
         >
           <DiaryCircleBox>
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
+            {[0, 1, 2, 3, 4, 5, 6].map((num) => (
+              <DiaryCircle key={num} />
+            ))}
           </DiaryCircleBox>
-
           {myData.img ? (
             <DiaryImg writtenData={myData} />
           ) : (
@@ -158,42 +145,34 @@ const DiaryPage = ({ diaryPageData }) => {
           )}
         </MyPage>
       </DiaryBox>
-      <DiaryBtn>
-        {showLeftBtn ? (
-          <DiaryLeftBtn onClick={onClickLeft}>
-            {" "}
-            <svg
-              width="25"
-              height="40"
-              viewBox="0 0 25 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.74423 23.6029C-0.299937 21.6359 -0.299939 18.3641 1.74423 16.3971L16.5331 2.1665C19.7096 -0.89011 25 1.36108 25 5.76938L25 34.2306C25 38.6389 19.7096 40.8901 16.5331 37.8335L1.74423 23.6029Z"
-                fill="#BAA373"
-              />
-            </svg>
-          </DiaryLeftBtn>
-        ) : (
-          ""
-        )}
-
-        <DiaryRightBtn onClick={onClickRight}>
-          <svg
-            width="25"
-            height="40"
-            viewBox="0 0 25 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M23.2558 16.3971C25.2999 18.3641 25.2999 21.6359 23.2558 23.6029L8.46688 37.8335C5.29036 40.8901 0 38.6389 0 34.2306L0 5.76937C0 1.36107 5.29036 -0.890114 8.46688 2.16649L23.2558 16.3971Z"
-              fill="#BAA373"
-            />
-          </svg>
-        </DiaryRightBtn>
-      </DiaryBtn>
+      <DiaryLeftBtn onClick={onClickLeft}>
+        <svg
+          width="25"
+          height="40"
+          viewBox="0 0 25 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1.74423 23.6029C-0.299937 21.6359 -0.299939 18.3641 1.74423 16.3971L16.5331 2.1665C19.7096 -0.89011 25 1.36108 25 5.76938L25 34.2306C25 38.6389 19.7096 40.8901 16.5331 37.8335L1.74423 23.6029Z"
+            fill={currentPage ? "#BAA373" : "#E0D6BF"}
+          />
+        </svg>
+      </DiaryLeftBtn>
+      <DiaryRightBtn onClick={onClickRight}>
+        <svg
+          width="25"
+          height="40"
+          viewBox="0 0 25 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M23.2558 16.3971C25.2999 18.3641 25.2999 21.6359 23.2558 23.6029L8.46688 37.8335C5.29036 40.8901 0 38.6389 0 34.2306L0 5.76937C0 1.36107 5.29036 -0.890114 8.46688 2.16649L23.2558 16.3971Z"
+            fill={currentPage === oppositeDataLast - 1 ? "#E0D6BF" : "#BAA373"}
+          />
+        </svg>
+      </DiaryRightBtn>
       <DiaryFooter>
         <DiaryComment>
           <svg
@@ -209,11 +188,6 @@ const DiaryPage = ({ diaryPageData }) => {
             />
           </svg>
         </DiaryComment>
-        <Link
-          to={{
-            pathname: "/diaryedit",
-          }}
-        />
         <DiaryEdit onClick={onClick}>
           <svg
             width="48"
@@ -248,7 +222,7 @@ const DiaryPage = ({ diaryPageData }) => {
           </svg>
         </DiaryEdit>
       </DiaryFooter>
-    </DiaryAdd>
+    </DiaryRecord>
   );
 };
 

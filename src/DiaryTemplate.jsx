@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const DiaryPlateBox = styled.div`
+const DiaryPlateBox = styled.section`
   display: flex;
   margin: 0 auto;
   flex-direction: column;
@@ -27,7 +27,6 @@ const DiaryPlate = styled.div`
   position: relative;
 `;
 
-const TemplateTitle = styled.div``;
 const TitleText = styled.span`
   background: #baa373;
   border-radius: 5px;
@@ -143,9 +142,9 @@ function DiaryTemplate({ setChangeImg, changeFc, fcColor, setFcColor }) {
     <DiaryPlateBox>
       <DiaryPlateTitle>일기장 템플릿</DiaryPlateTitle>
       <DiaryPlate>
-        <TemplateTitle>
+        <div>
           <TitleText>기본</TitleText>
-        </TemplateTitle>
+        </div>
         <TempImglist>
           {templateOriginImg.map((list, index) => (
             <TempImg
@@ -157,9 +156,9 @@ function DiaryTemplate({ setChangeImg, changeFc, fcColor, setFcColor }) {
             />
           ))}
         </TempImglist>
-        <TemplateTitle>
+        <div>
           <TitleText>크리스마스 ver</TitleText>
-        </TemplateTitle>
+        </div>
         <TempImglist>
           {templateChristmasImg.map((list) => (
             <TempImg
@@ -173,9 +172,9 @@ function DiaryTemplate({ setChangeImg, changeFc, fcColor, setFcColor }) {
         </TempImglist>
         {changeFc ? (
           <ChangeFontColor>
-            <TemplateTitle>
+            <div>
               <TitleText>글씨의 색상</TitleText>
-            </TemplateTitle>
+            </div>
             <FontColor>
               <SelectColorWhite
                 id="#FFFFFF"
@@ -191,7 +190,6 @@ function DiaryTemplate({ setChangeImg, changeFc, fcColor, setFcColor }) {
         ) : (
           ""
         )}
-
         <DiarySave>
           <SaveTitle onClick={saveBtn}>저장하기</SaveTitle>
         </DiarySave>

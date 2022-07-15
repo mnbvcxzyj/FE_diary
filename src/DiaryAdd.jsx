@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import DiaryHeadEdit from "./DiaryHeadEdit";
+import DiaryHeadAdd from "./DiaryHeadAdd";
 import DiaryTemplate from "./DiaryTemplate";
 
-const DiaryEd = styled.div`
-margin: 0 auto;
-margin-top: 40px;
-display: flex;
-width: 1280px;
-}
+const DiaryPlus = styled.div`
+  margin: 0 auto;
+  margin-top: 40px;
+  display: flex;
+  width: 1280px;
 `;
 
-const DiaryEditBox = styled.div`
+const DiaryAddBox = styled.section`
   background-color: rgb(200 228 153 / 40%);
   border-radius: 15px;
   width: 600px;
@@ -22,7 +21,7 @@ const DiaryEditBox = styled.div`
   background-size: cover;
 `;
 
-const DiarySection = styled.div`
+const DiaryAddDetail = styled.div`
   padding: 20px;
   width: 520px;
 `;
@@ -53,10 +52,6 @@ const ImgDiv = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
-  display: flex;
-`;
-
-const DiaryCenter = styled.div`
   display: flex;
 `;
 
@@ -98,7 +93,7 @@ const DeleteBtn = styled.div`
   background-size: cover;
 `;
 
-function DiaryEdit() {
+function DiaryAdd({ userData }) {
   const [changeImg, setChangeImg] = useState();
   const [clickImg, setClickImg] = useState(false);
   const [imgFile, setImgFile] = useState(require("./img/noimage.png"));
@@ -122,12 +117,11 @@ function DiaryEdit() {
   const onClickContent = () => {
     setChangeFc(true);
   };
-
   return (
-    <DiaryEd>
-      <DiaryEditBox style={style}>
-        <DiarySection>
-          <DiaryHeadEdit />
+    <DiaryPlus>
+      <DiaryAddBox style={style}>
+        <DiaryAddDetail>
+          <DiaryHeadAdd userData={userData} />
           <DiaryInputsDiv>
             <DiaryInputs
               maxLength="33"
@@ -156,7 +150,7 @@ function DiaryEdit() {
               ) : (
                 <>
                   <label htmlFor="imgFile">
-                    <AddBtn></AddBtn>
+                    <AddBtn />
                   </label>
                   <FileInput
                     id="imgFile"
@@ -168,27 +162,21 @@ function DiaryEdit() {
               )}
             </ImgDiv>
           </DiaryInputsDiv>
-        </DiarySection>
-        <DiaryCenter>
-          <DiaryCircleBox>
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-            <DiaryCircle />
-          </DiaryCircleBox>
-        </DiaryCenter>
-      </DiaryEditBox>
+        </DiaryAddDetail>
+        <DiaryCircleBox>
+          {[0, 1, 2, 3, 4, 5, 6].map((num) => (
+            <DiaryCircle key={num} />
+          ))}
+        </DiaryCircleBox>
+      </DiaryAddBox>
       <DiaryTemplate
         setChangeImg={setChangeImg}
         changeFc={changeFc}
         fcColor={fcColor}
         setFcColor={setFcColor}
       />
-    </DiaryEd>
+    </DiaryPlus>
   );
 }
 
-export default DiaryEdit;
+export default DiaryAdd;

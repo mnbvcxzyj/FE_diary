@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import song from "./img/song.png";
 
 const DiaryHeader = styled.div`
   height: 87px;
@@ -10,7 +9,6 @@ const DiaryHeader = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 0 10px;
-  position: relative;
 `;
 
 const DiaryInfo = styled.div`
@@ -19,13 +17,14 @@ const DiaryInfo = styled.div`
   padding: 10px 0;
   align-items: center;
 `;
+
 const InfoDate = styled.div`
   border-right: 2px solid #d1b883;
   color: #9b8962;
   padding-right: 15px;
 `;
 
-const DateInput = styled.div`
+const DateDiv = styled.div`
   all: unset;
 `;
 
@@ -49,17 +48,12 @@ const DiaryTitle = styled.div`
   display: flex;
   gap: 10px;
   padding: 10px 0;
+  align-items: center;
 `;
 
 const TitleText = styled.div`
-  font-weight: 400;
   font-size: 20px;
-  line-height: 25px;
   color: #77694c;
-`;
-
-const TitleInputDiv = styled.div`
-  width: 89%;
 `;
 
 const IconImg = styled.img`
@@ -71,7 +65,7 @@ function DiaryHead({ writtenData }) {
     <DiaryHeader>
       <DiaryInfo>
         <InfoDate>
-          <DateInput>{writtenData.date}</DateInput>
+          <DateDiv>{writtenData.date}</DateDiv>
         </InfoDate>
         <InfoIcon>
           <IconImg src={require(`./img/weather/${writtenData.weather}.png`)} />
@@ -79,15 +73,18 @@ function DiaryHead({ writtenData }) {
         <InfoIcon>
           <IconImg src={require(`./img/emotion/${writtenData.emotion}.png`)} />
         </InfoIcon>
-        {writtenData.detail.music?  <InfoMusic>
-          <IconImg src={song} />
-          {writtenData.detail.music}
-        </InfoMusic>:<InfoDes>{writtenData.detail.des}</InfoDes>}
-
+        {writtenData.detail.music ? (
+          <InfoMusic>
+            <IconImg src={require("./img/song.png")} />
+            {writtenData.detail.music}
+          </InfoMusic>
+        ) : (
+          <InfoDes>{writtenData.detail.des}</InfoDes>
+        )}
       </DiaryInfo>
       <DiaryTitle>
         <TitleText>제목</TitleText>
-        <TitleInputDiv>{writtenData.title}</TitleInputDiv>
+        <div>{writtenData.title}</div>
       </DiaryTitle>
     </DiaryHeader>
   );

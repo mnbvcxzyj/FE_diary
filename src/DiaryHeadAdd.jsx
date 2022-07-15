@@ -60,7 +60,11 @@ const MusicLabel = styled.label`
 const DiaryTitle = styled.div`
   display: flex;
   gap: 10px;
-  padding: 10px 0;
+  padding: 10px 2px;
+  &:focus-within {
+    background: #e4ffb8;
+    border-radius: 10px;
+  }
 `;
 
 const TitleText = styled.div`
@@ -170,16 +174,17 @@ const weather = [
   { id: "sunny", desKr: "해 쨍쩅" },
 ];
 
-function DiaryHeadEdit() {
+function DiaryHeadAdd({ userData }) {
   //날짜
-  const d = new Date();
-  const today = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
+  const td = new Date();
+  const today = new Date(td.getTime() - td.getTimezoneOffset() * 60000)
     .toISOString()
     .slice(0, 10);
-  const [reportDate, setReportDate] = useState(today);
+  const [selectDate, setSelectDate] = useState(today);
   const onChange = (event) => {
-    setReportDate(event.target.value);
+    setSelectDate(event.target.value);
   };
+
   //아이콘
   const [saveWeather, setSaveWeather] = useState("sunny");
   const [show, setShow] = useState(false);
@@ -229,11 +234,12 @@ function DiaryHeadEdit() {
   const onChangeMusic = (event) => {
     setMusicName(event.target.files[0].name);
   };
+
   return (
     <DiaryHeader>
       <DiaryInfo>
         <InfoDate>
-          <DateInput type="date" value={reportDate} onChange={onChange} />
+          <DateInput type="date" value={selectDate} onChange={onChange} />
         </InfoDate>
         <InfoIcon>
           <IconImg
@@ -325,4 +331,4 @@ function DiaryHeadEdit() {
   );
 }
 
-export default DiaryHeadEdit;
+export default DiaryHeadAdd;
