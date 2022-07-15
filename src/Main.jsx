@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import Modal from "react-modal";
-
+import data from "./data.json";
+import MainModal from "./MainModal";
+import { Modal } from "react-modal";
+import Login from "./Login";
 const SlogunTitleDiv = styled.div`
   position: absolute;
   width: 240.41px;
@@ -81,7 +83,6 @@ const DiaryImgDiv = styled.div`
   left: 0px;
   top: 0px;
 
-  background: url(.jpg), #f7f7f7;
   border-radius: 10px 10px 0px 0px;
 `;
 
@@ -171,6 +172,14 @@ const WriteTextDiv = styled.div`
   color: #000000;
 `;
 function Main() {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
   return (
     <>
       <SlogunTitleDiv>
@@ -180,12 +189,17 @@ function Main() {
       <SlogunSmallDiv>
         기억하고 싶은 하루를 기억하고 싶은 상대와 기록하세요
       </SlogunSmallDiv>
+
       <DiaryDiv>
-        {" "}
         <DiaryBoxDiv>
-          <DiaryImgDiv src="">
-            <AlbumImgDiv src="img/photo.png" />
+          <DiaryImgDiv style={{ backgroundImage: `URL(${data[0].img})` }}>
+            <AlbumImgDiv src="img/photo.png" onClick={openModal} />
+            <MainModal
+              open={showModal}
+              closeModal={() => setShowModal(!showModal)}
+            ></MainModal>
           </DiaryImgDiv>
+
           <DiaryNameDiv>
             <NameTextDiv>내 일기장</NameTextDiv>
           </DiaryNameDiv>

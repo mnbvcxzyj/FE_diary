@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import "./MainModal.css";
 import data from "./data.json";
 const MainModal = (props) => {
-  // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open } = props;
-  const [image, setImage] = useState({
-    image_file: "",
-    preview_URL: "URL(${data[0].img})",
-  });
+  const [fileImage, setFileImage] = useState();
+  const SaveFile = (e) => {
+    setFileImage(URL.createObjectURL(e.target.files[0]));
+  };
   function closeModal() {
     props.closeModal();
   }
@@ -28,7 +27,11 @@ const MainModal = (props) => {
               </label>
               <input
                 type="file"
+                accept="image/*"
                 id="fileInputImg"
+                onChange={(e) => {
+                  SaveFile(e);
+                }}
                 style={{ width: "0px", height: "0px" }}
               />
               <div className="imgText">이미지 불러오기</div>
