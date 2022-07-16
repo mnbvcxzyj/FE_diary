@@ -70,9 +70,6 @@ export const LoginButton = styled.button`
 
 const SignInModal = ({ show, onHide}) => {
 
-  const changeContents = () => {
-    setContents(prev => prev === "로그인" ? "로그아웃" : "로그인")
-  }
     return (
     <Modal
       show={show}
@@ -107,7 +104,7 @@ const SignInModal = ({ show, onHide}) => {
             /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             네이버로 로그인
             </LoginButton>
-            <LoginButton onClick={()=>{onHide(); changeContents();}}>
+            <LoginButton onClick={onHide}>
               <img src={google}
               width='24px'
               height='24px'
