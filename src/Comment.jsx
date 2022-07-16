@@ -2,15 +2,15 @@ import CommentEditor from './CommnetEditor';
 import CommentList from './CommentList';
 import React, {useState, useRef} from 'react';
 import { GlobalStyle } from "./style";
+import { CommentDiv, CommentWrote } from './CommentInput';
 
-const App = () => {
+const Comment = () => {
   const [data, setData] = useState([]);
 
   const dataId = useRef(0)
 
-  const onCreate = (author, content) => {
+  const onCreate = (content) => {
     const newItem = {
-      author, 
       content,
       id : dataId.current,
     };
@@ -22,12 +22,16 @@ const App = () => {
   return (
     <>
     <GlobalStyle/>
-    <div className="App">
+    <div>
+      <CommentDiv>
       <CommentEditor onCreate={onCreate} />
-      <CommentList commentList={data}></CommentList>
+      <CommentWrote>
+      <CommentList commentList={data}/>
+      </CommentWrote>
+      </CommentDiv>
     </div>
     </>
   );
 };    
 
-export default App; 
+export default Comment; 
