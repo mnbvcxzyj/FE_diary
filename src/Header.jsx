@@ -105,10 +105,14 @@ const MemberDiv = styled.div`
   color: #9b8962;
 `;
 
-const LoginDiv = styled.div`
+const SignButton = styled.span`
+
+`;
+
+const LoginDiv = styled.span`
   cursor: pointer;
 `;
-const SignUpDiv = styled.div`
+const SignUpDiv = styled.span`
   cursor: pointer;
 `;
 
@@ -141,24 +145,10 @@ function Header() {
         <MemoryDiv>추억</MemoryDiv>
       </MenuDiv>
       <MemberDiv>
-        {/* {
-          (SignUpModalOn || SignUpModalOn ) === true
-          ? (<div class="modal-outside" ref={outSection} onClick={(e)=>{
-            if(outSection.current === e.target) {
-              setSignUpModalOn(false)
-              setSignInModalOn(false)
-            }
-          }}>
-            <div class="madal-content">
-            <LoginDiv/>
-            <SignUpDiv/>
-            </div>
-            <div></div>
-          </div>)
-          : null
-        } */}
+        <SignButton>
         <LoginDiv onClick={()=>setSignInModalOn(true)}>로그인</LoginDiv>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         <SignUpDiv onClick={() => setSignUpModalOn(true)}>회원가입</SignUpDiv>
+        </SignButton>
       </MemberDiv>
     </HeaderDiv>
     </>
