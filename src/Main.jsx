@@ -62,7 +62,7 @@ const DiaryDiv = styled.div`
   flex-wrap: wrap;
 `;
 
-function Main() {
+function Main({ choosePage, setChoosePage }) {
   return (
     <>
       <SlogunTitleDiv>
@@ -75,7 +75,11 @@ function Main() {
       <DiaryDiv>
         <MainMyDiaryBox />
         {data.map((list) => (
-          <MainDiaryBox list={list} />
+          <MainDiaryBox
+            list={list}
+            choosePage={choosePage}
+            setChoosePage={setChoosePage}
+          />
         ))}
       </DiaryDiv>
     </>

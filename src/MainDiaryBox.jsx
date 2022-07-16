@@ -1,7 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import data from "./data.json";
 import MainModal from "./MainModal";
+import { useNavigate } from "react-router-dom";
 
 const DiaryBoxDiv = styled.div`
   width: 240px;
@@ -47,7 +49,10 @@ const DiaryNameDiv = styled.div`
   height: 28px;
   left: 30px;
   top: 243px;
-
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(101 163 13 / 30%);
+  }
   /* 가치의가치/B/배경 */
 
   background: #f7f7f7;
@@ -142,16 +147,18 @@ const DiaryCoverImg = styled.img`
   border-radius: 10px 10px 0px 0px;
 `;
 
-function MainDiaryBox({ list }) {
+function MainDiaryBox({ list, choosepage, setChoosePage }) {
   const [showModal, setShowModal] = useState(false);
   const [Image, setImage] = useState();
+  const navigate = useNavigate();
+
   const openModal = () => {
     setShowModal(true);
   };
   const closeModal = () => {
     setShowModal(false);
   };
-  console.log(Image);
+
   return (
     <DiaryBoxDiv>
       {/* 여기 이미지가 새롭게 파일 업로드한 이미지가 될 수 있도록 변경  */}
@@ -172,7 +179,12 @@ function MainDiaryBox({ list }) {
         ></MainModal>
       </DiaryImgDiv>
 
-      <DiaryNameDiv>
+      <DiaryNameDiv
+        onClick={() => {
+          setChoosePage(list.id);
+          navigate("/diary");
+        }}
+      >
         <NameTextDiv> {list["diary_name"]}</NameTextDiv>
       </DiaryNameDiv>
       <WithWriteText>와 함께</WithWriteText>

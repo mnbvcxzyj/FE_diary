@@ -18,7 +18,7 @@ const MainModal = (props) => {
     <div
       className={open ? "openModal modal" : "modal"}
       onClick={closeModal}
-      style={{ position: "fixed", overflow: "hidden", width: "100%" }}
+      style={{ position: "fixed", overflow: "auto", width: "100%" }}
     >
       {open ? (
         <section onClick={(e) => e.stopPropagation()}>

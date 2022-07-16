@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import { GlobalStyle } from "./style";
+import SignUpModal from "./SignUpModal";
+import SignInModal from "./SignInModal";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HeaderDiv = styled.div`
   position: absolute;
@@ -18,6 +23,7 @@ const LogoImg = styled.img`
   height: 80px;
   left: 24px;
   top: 1px;
+  cursor: pointer;
 `;
 
 const TitleLogoDiv = styled.div`
@@ -48,7 +54,6 @@ const MenuDiv = styled.div`
   align-items: flex-start;
   padding: 10px 200px;
   gap: 200px;
-
   color: #9b8962;
   position: absolute;
   width: 716.48px;
@@ -63,13 +68,15 @@ const DiaryDiv = styled.div`
   height: 62px;
   left: 200px;
   top: 10px;
-
   font-weight: 400;
   font-size: 24px;
   line-height: 29.52px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  :hover {
+    color: red;
+  }
 `;
 
 const MemoryDiv = styled.div`
@@ -92,47 +99,67 @@ const MemberDiv = styled.div`
   right: 21px;
   top: 17px;
   bottom: 41px;
-
   width: 148.08px;
   height: 24px;
-
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
   display: flex;
   align-items: center;
   text-align: center;
-
   color: #9b8962;
 `;
 
-const LoginDiv = styled.div`
+const SignButton = styled.span``;
+
+const LoginDiv = styled.span`
   cursor: pointer;
 `;
-const SignUpDiv = styled.div`
+const SignUpDiv = styled.span`
   cursor: pointer;
 `;
 
 function Header() {
   const [isSelect, setSelect] = useState([false, false]);
-
+  const [SignUpModalOn, setSignUpModalOn] = useState(false);
+  const [SignInModalOn, setSignInModalOn] = useState(false);
+  const outSection = useRef();
+  const navigate = useNavigate();
+  const [loginOut, setLoginOut] = useState(false);
   return (
-    <HeaderDiv>
-      <LogoImg src="img/logo.png" />
-      <TitleLogoDiv>
-        <TitleBig>같이</TitleBig>
-        <TitleSmall>의</TitleSmall>
-        <TitleBig> 가치</TitleBig>
-      </TitleLogoDiv>
-      <MenuDiv>
-        <DiaryDiv>일기장</DiaryDiv>
-        <MemoryDiv>추억</MemoryDiv>
-      </MenuDiv>
-      <MemberDiv>
-        <LoginDiv>로그인</LoginDiv>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{" "}
-        <SignUpDiv>회원가입</SignUpDiv>
-      </MemberDiv>
-    </HeaderDiv>
+    <>
+      <SignUpModal
+        show={SignUpModalOn}
+        onHide={() => setSignUpModalOn(false)}
+      />
+      <SignInModal
+        show={SignInModalOn}
+        onHide={() => setSignInModalOn(false)}
+        setLoginOut={setLoginOut}
+        loginOut={loginOut}
+      />
+      <HeaderDiv>
+        <LogoImg src="img/logo.png" onClick={() => navigate("/")} />
+        <TitleLogoDiv>
+          <TitleBig>같이</TitleBig>
+          <TitleSmall>의</TitleSmall>
+          <TitleBig> 가치</TitleBig>
+        </TitleLogoDiv>
+        <MenuDiv>
+          <DiaryDiv>일기장</DiaryDiv>
+          <MemoryDiv>추억</MemoryDiv>
+        </MenuDiv>
+        <MemberDiv>
+          <SignButton>
+            <LoginDiv onClick={() => setSignInModalOn(true)}>로그인</LoginDiv>
+            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <SignUpDiv onClick={() => setSignUpModalOn(true)}>
+              회원가입
+            </SignUpDiv>
+          </SignButton>
+        </MemberDiv>
+      </HeaderDiv>
+    </>
   );
 }
 
