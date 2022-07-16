@@ -77,8 +77,8 @@ const SignUpModal = ({ show, onHide}) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <BgDiv>
-          <LoginDiv>
+      <BgDiv onClick={onHide}>
+          <LoginDiv onClick={(e)=>e.stopPropagation()}>
             <Logo>
               <img src={logo}
               width='80px'
@@ -87,21 +87,21 @@ const SignUpModal = ({ show, onHide}) => {
             </Logo>
             <BigSlogun>소중한 사람과 함께 하루를 공유하는 일</BigSlogun>
             <SmallSlogun>간편 회원가입하고 <br/> 공유형 일기쓰기를 시작하세요</SmallSlogun>
-            <LoginButton>
+            <LoginButton onClick={onHide}>
               <img src={kakao}
               width='24px'
               height='24px'
             /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             카카오톡으로 회원가입
               </LoginButton>
-            <LoginButton>
+            <LoginButton onClick={onHide}>
               <img src={naver}
               width='24px'
               height='24px'
             /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             네이버로 회원가입
             </LoginButton>
-            <LoginButton>
+            <LoginButton onClick={onHide}>
               <img src={google}
               width='24px'
               height='24px'
