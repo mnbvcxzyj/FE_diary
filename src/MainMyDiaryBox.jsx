@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+
 import styled from "styled-components";
 import data from "./data.json";
 import MainModal from "./MainModal";
@@ -25,7 +26,7 @@ const DiaryImgDiv = styled.div`
   height: 220px;
   left: 0px;
   top: 0px;
-  background-size: cover;
+
   border-radius: 10px 10px 0px 0px;
 `;
 
@@ -37,18 +38,15 @@ const AlbumImgDiv = styled.img`
   bottom: 4.55%;
   width: 24px;
   height: 24px;
-  object-fit: fill;
   cursor: pointer;
 `;
 
 const DiaryNameDiv = styled.div`
   position: absolute;
-  width: 100px;
+  width: 180px;
   height: 28px;
   left: 30px;
   top: 243px;
-
-  /* 가치의가치/B/배경 */
 
   background: #f7f7f7;
   border-radius: 5px;
@@ -56,10 +54,11 @@ const DiaryNameDiv = styled.div`
 
 const NameTextDiv = styled.div`
   position: relative;
-
-  width: 48px;
+  width: 67px;
   height: 33px;
-  left: 20px;
+  left: 52.5px;
+
+  right: 60.5px;
 
   font-weight: 400;
   font-size: 16px;
@@ -116,68 +115,33 @@ const WriteTextDiv = styled.div`
 
   color: #000000;
 `;
-
-const WithWriteText = styled.div`
-  position: relative;
-  width: 72px;
-  height: 33px;
-  left: 145px;
-  top: 23px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-
-  color: #000000;
-`;
-
-const DiaryCoverImg = styled.img`
-  position: absolute;
-  width: 240px;
-  height: 220px;
-  left: 0px;
-  top: 0px;
-
-  border-radius: 10px 10px 0px 0px;
-`;
-
-function MainDiaryBox({ list }) {
+function MainDiaryBox() {
   const [showModal, setShowModal] = useState(false);
-  const [Image, setImage] = useState();
+
   const openModal = () => {
     setShowModal(true);
   };
+
   const closeModal = () => {
     setShowModal(false);
   };
-  console.log(Image);
   return (
     <DiaryBoxDiv>
-      {/* 여기 이미지가 새롭게 파일 업로드한 이미지가 될 수 있도록 변경  */}
-      <DiaryImgDiv>
-        {list["img"] ? (
-          <DiaryCoverImg src={Image ? `${Image}` : `${list["img"]}`} />
-        ) : (
-          ""
-        )}
-
+      <DiaryImgDiv style={{ backgroundImage: `URL(${data[0].img})` }}>
         <AlbumImgDiv src="img/photo.png" onClick={openModal} />
-        <MainModal
-          open={showModal}
-          closeModal={() => setShowModal(!showModal)}
-          diaryImage={list["img"]}
-          Image={Image}
-          setImage={setImage}
-        ></MainModal>
+        {data.map((list) => (
+          <MainModal
+            open={showModal}
+            closeModal={() => setShowModal(!showModal)}
+            diaryImage={list["img"]}
+          ></MainModal>
+        ))}
       </DiaryImgDiv>
-
       <DiaryNameDiv>
-        <NameTextDiv> {list["diary_name"]}</NameTextDiv>
+        <NameTextDiv>내 일기장</NameTextDiv>
       </DiaryNameDiv>
-      <WithWriteText>와 함께</WithWriteText>
       <DayDiv>
-        <DayTextDiv>D + {list["d-day"]}</DayTextDiv>
+        <DayTextDiv>D + 456</DayTextDiv>
       </DayDiv>
       <WriteTextDiv>째 작성</WriteTextDiv>
     </DiaryBoxDiv>

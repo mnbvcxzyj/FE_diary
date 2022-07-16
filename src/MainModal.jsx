@@ -1,64 +1,52 @@
 import React, { useState, useRef } from "react";
 import "./MainModal.css";
-import data from "./data.json";
 
 const MainModal = (props) => {
-  const { open, diaryImage } = props;
-  const [Image, setImage] = useState();
+  const { open, diaryImage, Image, setImage } = props;
 
   const fileInput = useRef(null);
 
   const onChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    } else {
-      setImage(
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-      );
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setImage(reader.result);
-      }
-    };
-    reader.readAsDataURL(e.target.files[0]);
+    setImage(URL.createObjectURL(e.target.files[0]));
   };
 
   function closeModal() {
     props.closeModal();
+    document.style.overflow = "unset";
   }
   return (
-    <div className={open ? "openModal modal" : "modal"} onClick={closeModal}>
+    <div
+      className={open ? "openModal modal" : "modal"}
+      onClick={closeModal}
+      style={{ position: "fixed", overflow: "hidden", width: "100%" }}
+    >
       {open ? (
-        <section>
-          <div className="modalBody" onClick={(e) => e.stopPropagation()}>
+        <section onClick={(e) => e.stopPropagation()}>
+          <div className="modalBody">
             <div className="changeText">일기장 표지 변경</div>
 
             <div
               className="diaryImg"
-              style={{ backgroundImage: `URL(${diaryImage})` }}
-            ></div>
+              style={{
+                backgroundImage: Image ? `URL(${Image})` : `URL(${diaryImage})`,
+              }}
+            />
             <footer>
               <label htmlFor="fileInputImg" className="fileInputImg">
                 <img src="img/album.png" />
               </label>
-
               <input
                 type="file"
                 accept="image/*"
                 id="fileInputImg"
-                onChange={onChange}
+                onChange={(e) => {
+                  onChange(e);
+                }}
                 ref={fileInput}
                 style={{ width: "0px", height: "0px" }}
               />
               {Image ? (
-                <button
-                  className="changeBtn"
-                  onClick={() => fileInput.current.click()}
-                >
+                <button className="changeBtn" onClick={closeModal}>
                   <div className="changeBtnText">변경 완료</div>
                 </button>
               ) : (
