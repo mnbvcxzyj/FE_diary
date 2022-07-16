@@ -70,6 +70,9 @@ export const LoginButton = styled.button`
 
 const SignInModal = ({ show, onHide}) => {
 
+  const changeContents = () => {
+    setContents(prev => prev === "로그인" ? "로그아웃" : "로그인")
+  }
     return (
     <Modal
       show={show}
@@ -78,8 +81,8 @@ const SignInModal = ({ show, onHide}) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <BgDiv>
-          <LoginDiv>
+      <BgDiv onClick={onHide}>
+          <LoginDiv onClick={(e)=>e.stopPropagation()}>
             <Logo>
               <img src={logo}
               width='80px'
@@ -88,7 +91,7 @@ const SignInModal = ({ show, onHide}) => {
             </Logo>
             <BigSlogun>소중한 사람과 함께 하루를 공유하는 일</BigSlogun>
             <SmallSlogun>간편 로그인하고 <br/> 공유형 일기쓰기를 시작하세요</SmallSlogun>
-            <LoginButton>
+            <LoginButton onClick={onHide}>
             <div>
               <img src={kakao}
               width='24px'
@@ -97,14 +100,14 @@ const SignInModal = ({ show, onHide}) => {
             카카오톡으로 로그인
             </div>
               </LoginButton>
-            <LoginButton>
+            <LoginButton onClick={onHide}>
               <img src={naver}
               width='24px'
               height='24px'
             /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             네이버로 로그인
             </LoginButton>
-            <LoginButton>
+            <LoginButton onClick={()=>{onHide(); changeContents();}}>
               <img src={google}
               width='24px'
               height='24px'
