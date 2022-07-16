@@ -88,10 +88,12 @@ const DiaryPage = ({ diaryPageData }) => {
   const myData = userData[currentPage];
   const opData = oppositeData[currentPage];
   const onClickLeft = () => {
-    setCurrentPage((pg) => (currentPage > 0 ? pg - 1 : ""));
+    setCurrentPage((pg) => (currentPage > 0 ? pg - 1 : 0));
   };
   const onClickRight = () => {
-    setCurrentPage((pg) => (currentPage < oppositeDataLast - 1 ? pg + 1 : ""));
+    setCurrentPage((pg) =>
+      currentPage < oppositeDataLast - 1 ? pg + 1 : oppositeDataLast - 1
+    );
   };
   const navigate = useNavigate();
   const onClick = () => {
