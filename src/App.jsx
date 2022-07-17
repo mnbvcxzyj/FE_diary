@@ -1,16 +1,21 @@
-import React, { useRef } from "react";
-import { BrowserRouter } from "react-router-dom";
+import React from "react";
 import { GlobalStyle } from "./style";
-import Header from "./Header";
-import Main from "./Main";
+import AddMain from "./AddMain";
+import Connect from "./Connect";
+import Search from "./Search";
+import ConnectWait from "./ConnectWait";
+import ActiveButton from "./ActiveButton";
+import WriteInviteCode from "./WriteInviteCode";
+import Search2 from "./Search2";
+import Add from "./Add";
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Header />
-      <Main />
+      <AddMain />
     </>
   );
 };
+
 export default App;

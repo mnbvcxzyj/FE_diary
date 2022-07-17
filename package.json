@@ -9,15 +9,7 @@
     "global": "^4.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-router-dom": "6",
-=======
-    "react-modal": "^3.15.1",
-    "react-router-dom": "^6.3.0",
->>>>>>> c1ec78e2c2cc929b8ff77f41ff5bfe4ce9ce645d
     "react-scripts": "^5.0.1",
-    "styled-components": "^5.3.5",
-    "styled-reset": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
