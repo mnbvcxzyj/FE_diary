@@ -1,16 +1,16 @@
-import React from 'react';
-  import logo from './img/logo.png';
-  import kakao from './img/kakaotalk.png';
-  import google from './img/google.png';
-  import naver from './img/naver.png';
-  import './modal.css';
+import React, { useState } from 'react';
+import logo from './img/logo.png';
+import kakao from './img/kakaotalk.png';
+import google from './img/google.png';
+import naver from './img/naver.png';
+import './modal.css';
 import { Modal, Button } from 'react-bootstrap';
 
 import styled from "styled-components";
 
 export const BgDiv = styled.div`
-height: 2000px;
 width: 100%;
+height: 2000px;
 background-color: rgba(00, 00, 00, 0.5);
 `;
 
@@ -28,8 +28,8 @@ font-family: "BMDOHYEON";
 
 export const Logo = styled.div`
   position: relative;
-  width: 80px;
   height : 80px;
+  width: 80px;
   margin: 16px;
   margin-left: auto;
   margin-right: auto;
@@ -68,7 +68,24 @@ export const LoginButton = styled.button`
   font-family: "BMDOHYEON";
 `;
 
-const SignUpModal = ({ show, onHide}) => {
+const Ddiv = styled.div`
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  left: 0px;
+  top: 0px;
+  background: #FFFFFF;
+  border-radius: 10px;
+`;
+
+const SignInModal = ({ show, onHide, login, setLogin}) => {
+
+  // const [logout, setLogout] = useState(false);
+
+  // function sendData(){
+  //   props.setLogin("true");
+  // }
+
     return (
     <Modal
       show={show}
@@ -78,40 +95,47 @@ const SignUpModal = ({ show, onHide}) => {
       centered
     >
       <BgDiv onClick={onHide}>
-          <LoginDiv onClick={(e)=>e.stopPropagation()}>
-            <Logo>
-              <img src={logo}
-              width='80px'
-              height='80px'
-              />
-            </Logo>
-            <BigSlogun>소중한 사람과 함께 하루를 공유하는 일</BigSlogun>
-            <SmallSlogun>간편 회원가입하고 <br/> 공유형 일기쓰기를 시작하세요</SmallSlogun>
-            <LoginButton onClick={onHide}>
+        <LoginDiv onClick={(e)=>e.stopPropagation()}>
+          <Logo>
+            <img src={logo}
+            width='80px'
+            height='80px'
+            />
+          </Logo>
+          <BigSlogun>소중한 사람과 함께 하루를 공유하는 일</BigSlogun>
+          <SmallSlogun>간편 회원가입하고 <br/> 공유형 일기쓰기를 시작하세요</SmallSlogun>
+          <LoginButton onClick={()=>{onHide();}}>
+            <div onClick={()=>{setLogin(true)}}>
               <img src={kakao}
               width='24px'
               height='24px'
-            /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            카카오톡으로 회원가입
-              </LoginButton>
-            <LoginButton onClick={onHide}>
-              <img src={naver}
-              width='24px'
-              height='24px'
+              /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              카카오톡으로 회원가입
+            </div>
+          </LoginButton>
+          <LoginButton onClick={()=>{onHide();}}>
+            <div onClick={()=>{setLogin(true)}}>
+            <img src={naver}
+            width='24px'
+            height='24px'
             /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             네이버로 회원가입
-            </LoginButton>
-            <LoginButton onClick={onHide}>
-              <img src={google}
-              width='24px'
-              height='24px'
+            </div>
+          </LoginButton>
+          <LoginButton onClick={()=>{onHide();}}>
+            <div onClick={()=>{setLogin(true)}}>
+            <img src={google}
+            width='24px'
+            height='24px'
             /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             구글로 회원가입
-            </LoginButton>
-          </LoginDiv>
-          </BgDiv>
+            </div>
+          </LoginButton>
+         
+        </LoginDiv>
+      </BgDiv>
     </Modal>
     );
 };
 
-export default SignUpModal;
+export default SignInModal;
