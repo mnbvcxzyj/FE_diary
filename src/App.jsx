@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { GlobalStyle } from "./style";
 import Header from "./Header";
-import CommentInput from "./CommentInput";
-import { CommentBtn } from "./CommentInput";
-import commentButton from "./img/CommentButton.png";
-import Comment from "./Comment";
-import Main from "./Main";
-import DiaryAdd from "./DiaryAdd";
-import data from "./data.json";
 
-import DiaryPage from "./DiaryPage";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Main from "./pages/Main/Main";
+import DiaryAdd from "./pages/Diary/DiaryAdd";
+import data from "./data.json";
+import Comment from "./pages/Diary/Comment";
+import DiaryPage from "./pages/Diary/DiaryPage";
+import { Routes, Route } from "react-router-dom";
+import Rem from "./pages/View/rem";
 
 const App = () => {
   // const diaryPageData = data..diary;
@@ -19,7 +17,7 @@ const App = () => {
   if (choosePage) {
     diaryPageData = data[choosePage - 1].diary;
   }
-
+  const [calBtn, setCalBtn] = useState();
   return (
     <>
       <GlobalStyle />
@@ -34,9 +32,19 @@ const App = () => {
         ></Route>
         <Route
           path={"/diary"}
-          element={<DiaryPage diaryPageData={diaryPageData} />}
+          element={
+            <DiaryPage
+              diaryPageData={diaryPageData}
+              calBtn={calBtn}
+              setCalBtn={setCalBtn}
+            />
+          }
         ></Route>
         <Route path={"/diaryadd"} element={<DiaryAdd />}></Route>
+        <Route
+          path={"/diaryremember"}
+          element={<Rem items={data} calBtn={calBtn} setCalBtn={setCalBtn} />}
+        ></Route>
       </Routes>
     </>
   );

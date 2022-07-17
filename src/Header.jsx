@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import { GlobalStyle } from "./style";
-import SignUpModal from "./SignUpModal";
-import SignInModal from "./SignInModal";
-import { useRef } from "react";
+import SignUpModal from "./pages/Login/SignUpModal";
+import SignInModal from "./pages/Login/SignInModal";
 import { useNavigate, NavLink } from "react-router-dom";
 
 const HeaderDiv = styled.div`
@@ -62,20 +60,6 @@ const MenuDiv = styled.div`
   top: 0px;
 `;
 
-// const DiaryNavLink = styled.div`
-//   position: absolute;
-//   width: 70px;
-//   height: 62px;
-//   left: 200px;
-//   top: 10px;
-//   font-weight: 400;
-//   font-size: 24px;
-//   line-height: 29.52px;
-//   display: flex;
-//   align-items: center;
-//   cursor: pointer;
-// `;
-
 const MemoryDiv = styled.div`
   position: absolute;
   width: 46.48px;
@@ -116,15 +100,18 @@ const SignUpDiv = styled.span`
   cursor: pointer;
 `;
 
+const LogOutDiv = styled.span`
+  cursor: pointer;
+`;
+
 function Header() {
-  const [isSelect, setSelect] = useState([false, false]);
   const [SignUpModalOn, setSignUpModalOn] = useState(false);
   const [SignInModalOn, setSignInModalOn] = useState(false);
 
   const navigate = useNavigate();
-  const [loginOut, setLoginOut] = useState(false);
 
-  const [color, setColor] = useState("#9B8962");
+  const [logOut, setLogout] = useState(false);
+  const [login, setLogin] = useState(false);
 
   const activeStyle = {
     width: "70px",
@@ -157,15 +144,19 @@ function Header() {
   };
   return (
     <>
+      {/* 회원가입 */}
       <SignUpModal
         show={SignUpModalOn}
         onHide={() => setSignUpModalOn(false)}
+        login={login}
+        setLogin={setLogin}
       />
+      {/* 로그인 */}
       <SignInModal
         show={SignInModalOn}
         onHide={() => setSignInModalOn(false)}
-        setLoginOut={setLoginOut}
-        loginOut={loginOut}
+        login={login}
+        setLogin={setLogin}
       />
       <HeaderDiv>
         <LogoImg src="img/logo.png" onClick={() => navigate("/")} />
@@ -181,17 +172,43 @@ function Header() {
           >
             일기장
           </NavLink>
-
-          <MemoryDiv>추억</MemoryDiv>
+          <NavLink
+            to={"/diaryremember"}
+            style={({ isActive }) => (isActive ? activeStyle : nonActiveStyle)}
+          >
+            <MemoryDiv>추억</MemoryDiv>
+          </NavLink>
         </MenuDiv>
         <MemberDiv>
-          <SignButton>
-            <LoginDiv onClick={() => setSignInModalOn(true)}>로그인</LoginDiv>
-            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            <SignUpDiv onClick={() => setSignUpModalOn(true)}>
-              회원가입
-            </SignUpDiv>
-          </SignButton>
+          {login ? (
+            <LogOutDiv
+              onClick={() => {
+                setLogin(false);
+              }}
+            >
+              로그아웃
+            </LogOutDiv>
+          ) : (
+            <SignButton>
+              <LoginDiv
+                onClick={() => {
+                  setSignInModalOn(true);
+                  setLogin = { setLogin };
+                }}
+              >
+                로그인
+              </LoginDiv>
+              &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+              <SignUpDiv
+                onClick={() => {
+                  setSignUpModalOn(true);
+                  setLogin = { setLogin };
+                }}
+              >
+                회원가입
+              </SignUpDiv>
+            </SignButton>
+          )}
         </MemberDiv>
       </HeaderDiv>
     </>

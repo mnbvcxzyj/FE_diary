@@ -1,0 +1,161 @@
+.modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 82px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgb(109 114 128 / 80%);
+}
+
+.changeText {
+  position: absolute;
+  width: 294px;
+  height: 34px;
+  left: 140px;
+  top: 38px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.68px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* 같이의가치/B/6 */
+
+  color: #77694c;
+}
+
+.albumImgFile {
+  position: absolute;
+  left: 190px;
+  right: 45.24%;
+  top: 76.19%;
+  bottom: 60.93px;
+  cursor: pointer;
+}
+
+.diaryImg {
+  position: absolute;
+  width: 240px;
+  height: 220px;
+
+  left: 90px;
+  top: 86px;
+  background-size: 100% 100%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.imgText {
+  position: absolute;
+  width: 103.25px;
+  height: 17px;
+  left: 169px;
+  top: 375px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #77694c;
+}
+
+.diaryImgAlbum {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 5%;
+  right: 85%;
+  top: 84.55%;
+  bottom: 4.55%;
+}
+
+.changeBtn {
+  position: absolute;
+  width: 100px;
+  height: 32px;
+  left: 160px;
+  top: 373.07px;
+  border: 0px;
+  outline: 0px;
+
+  background: #77694c;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.changeBtnText {
+  position: absolute;
+  width: 58.5px;
+  height: 17px;
+  left: 22px;
+  top: 8px;
+  font-family: "BM DoHyeon";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* White */
+
+  color: #ffffff;
+}
+.modal > section {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  left: 430px;
+  top: 109px;
+
+  /* White */
+
+  background: #ffffff;
+  border-radius: 10px;
+  /* 팝업이 열릴때 스르륵 열리는 효과 */
+  animation: modal-show 0.3s;
+  overflow: hidden;
+}
+
+.fileInputImg {
+  position: absolute;
+  left: 190px;
+  right: 45.24%;
+  top: 77%;
+  bottom: 14.51%;
+  cursor: pointer;
+}
+
+.modal.openModal {
+  display: flex;
+  align-items: center;
+  /* 팝업이 열릴때 스르륵 열리는 효과 */
+  animation: modal-bg-show 0.3s;
+}
+
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
