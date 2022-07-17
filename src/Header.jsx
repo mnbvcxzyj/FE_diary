@@ -87,7 +87,6 @@ const MemoryDiv = styled.div`
   align-items: center;
   cursor: pointer;
 `;
-
 const MemberDiv = styled.div`
   position: absolute;
   left: 1110.92px;
@@ -116,21 +115,33 @@ const SignUpDiv = styled.span`
   cursor: pointer;
 `;
 
+const LogOutDiv = styled.span`
+cursor:pointer;
+`;
+
 function Header() {
-  const [isSelect, setSelect] = useState([false, false]);
   const [SignUpModalOn, setSignUpModalOn] = useState(false);
   const [SignInModalOn, setSignInModalOn] = useState(false);
   const outSection = useRef();
+  const [logOut, setLogout] = useState(false);
+  const [login, setLogin] = useState(false);
 
   return (
     <>
+    {/* 회원가입 */}
     <SignUpModal 
       show={SignUpModalOn} 
       onHide={()=>setSignUpModalOn(false)}
+      login={login}
+      setLogin={setLogin}
     />
+    {/* 로그인 */}
     <SignInModal 
       show={SignInModalOn} 
       onHide={()=>setSignInModalOn(false)}
+      login={login}
+      setLogin={setLogin}
+      
     />
     <HeaderDiv>
       <GlobalStyle/>
@@ -145,10 +156,14 @@ function Header() {
         <MemoryDiv>추억</MemoryDiv>
       </MenuDiv>
       <MemberDiv>
+        { login ? (
+          <LogOutDiv onClick={()=>{setLogin(false)}}>로그아웃</LogOutDiv>
+        ): (
         <SignButton>
-        <LoginDiv onClick={()=>setSignInModalOn(true)}>로그인</LoginDiv>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <SignUpDiv onClick={() => setSignUpModalOn(true)}>회원가입</SignUpDiv>
+        <LoginDiv onClick={()=>{setSignInModalOn(true); setLogin={setLogin}}}>로그인</LoginDiv>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <SignUpDiv onClick={() =>{setSignUpModalOn(true); setLogin={setLogin}}}>회원가입</SignUpDiv>
         </SignButton>
+        )}
       </MemberDiv>
     </HeaderDiv>
     </>
@@ -156,18 +171,3 @@ function Header() {
 }
 
 export default Header;
-
-/*
-        {
-          (SignUpModalOn || SignUpModalOn ) === true
-          ? (<div class="modal-outside" ref={outSection} onClick={(e)=>{
-            if(outSection.current === e.target) {
-              setSignUpModalOn(false)
-              setSignInModalOn(false)
-            }
-          }}>
-            <div class="madal-content">모달창 내용</div>
-          </div>)
-          : null
-        }
-*/  
