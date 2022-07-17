@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import logo from './img/logo.png';
 import kakao from './img/kakaotalk.png';
 import google from './img/google.png';
@@ -68,7 +68,23 @@ export const LoginButton = styled.button`
   font-family: "BMDOHYEON";
 `;
 
-const SignInModal = ({ show, onHide}) => {
+const Ddiv = styled.div`
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  left: 0px;
+  top: 0px;
+  background: #FFFFFF;
+  border-radius: 10px;
+`;
+
+const SignInModal = ({ show, onHide, login, setLogin}) => {
+
+  // const [logout, setLogout] = useState(false);
+
+  // function sendData(){
+  //   props.setLogin("true");
+  // }
 
     return (
     <Modal
@@ -79,40 +95,45 @@ const SignInModal = ({ show, onHide}) => {
       centered
     >
       <BgDiv onClick={onHide}>
-          <LoginDiv onClick={(e)=>e.stopPropagation()}>
-            <Logo>
-              <img src={logo}
-              width='80px'
-              height='80px'
-              />
-            </Logo>
-            <BigSlogun>소중한 사람과 함께 하루를 공유하는 일</BigSlogun>
-            <SmallSlogun>간편 로그인하고 <br/> 공유형 일기쓰기를 시작하세요</SmallSlogun>
-            <LoginButton onClick={onHide}>
-            <div>
+        <LoginDiv onClick={(e)=>e.stopPropagation()}>
+          <Logo>
+            <img src={logo}
+            width='80px'
+            height='80px'
+            />
+          </Logo>
+          <BigSlogun>소중한 사람과 함께 하루를 공유하는 일</BigSlogun>
+          <SmallSlogun>간편 로그인하고 <br/> 공유형 일기쓰기를 시작하세요</SmallSlogun>
+          <LoginButton onClick={()=>{onHide();}}>
+            <div onClick={()=>{setLogin(true)}}>
               <img src={kakao}
               width='24px'
               height='24px'
-            /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            카카오톡으로 로그인
+              /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              카카오톡으로 로그인
             </div>
-              </LoginButton>
-            <LoginButton onClick={onHide}>
-              <img src={naver}
-              width='24px'
-              height='24px'
+          </LoginButton>
+          <LoginButton onClick={()=>{onHide();}}>
+            <div onClick={()=>{setLogin(true)}}>
+            <img src={naver}
+            width='24px'
+            height='24px'
             /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             네이버로 로그인
-            </LoginButton>
-            <LoginButton onClick={onHide}>
-              <img src={google}
-              width='24px'
-              height='24px'
+            </div>
+          </LoginButton>
+          <LoginButton onClick={()=>{onHide();}}>
+            <div onClick={()=>{setLogin(true)}}>
+            <img src={google}
+            width='24px'
+            height='24px'
             /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             구글로 로그인
-            </LoginButton>
-          </LoginDiv>
-          </BgDiv>
+            </div>
+          </LoginButton>
+         
+        </LoginDiv>
+      </BgDiv>
     </Modal>
     );
 };
