@@ -13,19 +13,18 @@ import DiaryPage from "./DiaryPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 const App = () => {
-  // diaryPageData의 type은 객체형식
   // const diaryPageData = data..diary;
-  const [choosePage, setChoosePage] = useState();
+  const [choosePage, setChoosePage] = useState(1);
   let diaryPageData;
   if (choosePage) {
     diaryPageData = data[choosePage - 1].diary;
   }
-  console.log(diaryPageData);
+
   return (
     <>
       <GlobalStyle />
       <Header />
-      {/* <Main choosePage={choosePage} setChoosePage={setChoosePage} /> */}
+
       <Routes>
         <Route
           path={"/"}

@@ -69,7 +69,6 @@ export const LoginButton = styled.button`
 `;
 
 const SignInModal = ({ show, onHide, loginOut, setLoginOut }) => {
-  console.log(loginOut, setLoginOut);
   return (
     <Modal
       show={show}
@@ -90,7 +89,7 @@ const SignInModal = ({ show, onHide, loginOut, setLoginOut }) => {
           <LoginButton onClick={onHide}>
             <div
               onClick={() => {
-                console.log("dfdf");
+                setLoginOut(true);
               }}
             >
               <img src={kakao} width="24px" height="24px" />{" "}

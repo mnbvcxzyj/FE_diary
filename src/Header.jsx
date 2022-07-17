@@ -5,7 +5,7 @@ import { GlobalStyle } from "./style";
 import SignUpModal from "./SignUpModal";
 import SignInModal from "./SignInModal";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const HeaderDiv = styled.div`
   position: absolute;
@@ -54,7 +54,7 @@ const MenuDiv = styled.div`
   align-items: flex-start;
   padding: 10px 200px;
   gap: 200px;
-  color: #9b8962;
+
   position: absolute;
   width: 716.48px;
   height: 82px;
@@ -62,22 +62,19 @@ const MenuDiv = styled.div`
   top: 0px;
 `;
 
-const DiaryDiv = styled.div`
-  position: absolute;
-  width: 70px;
-  height: 62px;
-  left: 200px;
-  top: 10px;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 29.52px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  :hover {
-    color: red;
-  }
-`;
+// const DiaryNavLink = styled.div`
+//   position: absolute;
+//   width: 70px;
+//   height: 62px;
+//   left: 200px;
+//   top: 10px;
+//   font-weight: 400;
+//   font-size: 24px;
+//   line-height: 29.52px;
+//   display: flex;
+//   align-items: center;
+//   cursor: pointer;
+// `;
 
 const MemoryDiv = styled.div`
   position: absolute;
@@ -123,9 +120,41 @@ function Header() {
   const [isSelect, setSelect] = useState([false, false]);
   const [SignUpModalOn, setSignUpModalOn] = useState(false);
   const [SignInModalOn, setSignInModalOn] = useState(false);
-  const outSection = useRef();
+
   const navigate = useNavigate();
   const [loginOut, setLoginOut] = useState(false);
+
+  const [color, setColor] = useState("#9B8962");
+
+  const activeStyle = {
+    width: "70px",
+    height: "62px",
+    left: "200px",
+    top: "10px",
+    fontWeight: "400",
+    fontSize: "24px",
+    lineHeight: "29.52px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    color: "#84CC16",
+    textDecoration: "none",
+  };
+
+  const nonActiveStyle = {
+    width: "70px",
+    height: "62px",
+    left: "200px",
+    top: "10px",
+    fontWeight: "400",
+    fontSize: "24px",
+    lineHeight: "29.52px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    color: "#9B8962",
+    textDecoration: "none",
+  };
   return (
     <>
       <SignUpModal
@@ -146,7 +175,13 @@ function Header() {
           <TitleBig> 가치</TitleBig>
         </TitleLogoDiv>
         <MenuDiv>
-          <DiaryDiv>일기장</DiaryDiv>
+          <NavLink
+            to={"/diary"}
+            style={({ isActive }) => (isActive ? activeStyle : nonActiveStyle)}
+          >
+            일기장
+          </NavLink>
+
           <MemoryDiv>추억</MemoryDiv>
         </MenuDiv>
         <MemberDiv>
