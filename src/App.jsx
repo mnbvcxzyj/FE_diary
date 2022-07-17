@@ -1,11 +1,11 @@
-import React from 'react';
+import RemMain from './RemMain';
 
-const App = () => {
-  return (
-    <div>
 
-    </div>
-  );
-};
 
-export default App; 
+function App(){
+    return 
+               <RemMain></RemMain>
+              
+};                   
+
+export default App;
