@@ -4,29 +4,12 @@
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS5WVvgGVU0SEMP-n9FD5ADk7xJfH666o7Ng&usqp=CAU",
     "diary_name": "Kanlam",
     "d-day": 1,
+<<<<<<< Updated upstream
+=======
+    "shareDate": ["2022-07-17", "2022-07-20"],
+>>>>>>> Stashed changes
     "diary": {
       "user": [
-        {
-          "date": "2022-07-15",
-          "weather": "windy",
-          "emotion": "dizzy",
-          "detail": { "music": "", "des": "오늘은 비가 많이 옴" },
-          "text": [
-            "initiative",
-            "",
-            "안녕",
-            "",
-            "어캐할따",
-            "",
-            "",
-            "뭐지",
-            ""
-          ],
-          "textColor": "#ffffff",
-          "title": "Cookley",
-          "template": "",
-          "img": "https://ifh.cc/g/VCnYGm.jpg"
-        },
         {
           "date": "2022-07-17",
           "weather": "moon",
@@ -71,27 +54,6 @@
         }
       ],
       "opposite": [
-        {
-          "date": "2022-07-15",
-          "weather": "snow",
-          "emotion": "love",
-          "detail": { "music": "pop", "des": "" },
-          "text": [
-            "initiative",
-            "",
-            "역시 한국인...",
-            "",
-            "",
-            "",
-            "웹소설보고 싶다",
-            "",
-            ""
-          ],
-          "textColor": "#000000",
-          "title": "달달 무슨달",
-          "template": 10,
-          "img": ""
-        },
         {
           "date": "2022-07-17",
           "weather": "star",
@@ -144,10 +106,14 @@
     "img": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.ktsketch.co.kr%2Fnews%2Fphoto%2F201907%2F4041_14187_531.gif&imgrefurl=https%3A%2F%2Fwww.ktsketch.co.kr%2Fnews%2FarticleView.html%3Fidxno%3D4041&tbnid=o4GN0xWvV2VtmM&vet=12ahUKEwiN-dOF6vT4AhVPFYgKHS0uCcsQMygMegUIARDOAQ..i&docid=lhE_7iwqcnn2rM&w=933&h=618&q=%EC%82%B0&ved=2ahUKEwiN-dOF6vT4AhVPFYgKHS0uCcsQMygMegUIARDOAQ",
     "diary_name": "Sonair",
     "d-day": 2,
+<<<<<<< Updated upstream
+=======
+    "shareDate": ["2022-07-16", "2022-07-18", "2022-07-20"],
+>>>>>>> Stashed changes
     "diary": {
       "user": [
         {
-          "date": "2022-07-15",
+          "date": "2022-07-16",
           "weather": "windy",
           "emotion": "dizzy",
           "detail": { "music": "", "des": "오늘은 비가 많이 옴" },
@@ -168,7 +134,7 @@
           "img": "https://ifh.cc/g/VCnYGm.jpg"
         },
         {
-          "date": "2022-07-17",
+          "date": "2022-07-18",
           "weather": "moon",
           "emotion": "happy",
           "detail": { "music": "pilates", "des": "" },
@@ -212,7 +178,7 @@
       ],
       "opposite": [
         {
-          "date": "2022-07-15",
+          "date": "2022-07-16",
           "weather": "snow",
           "emotion": "love",
           "detail": { "music": "pop", "des": "" },
@@ -228,12 +194,12 @@
             ""
           ],
           "textColor": "#000000",
-          "title": "달달 무슨달",
+          "title": "오늘은 보름달",
           "template": 10,
           "img": ""
         },
         {
-          "date": "2022-07-17",
+          "date": "2022-07-18",
           "weather": "star",
           "emotion": "music",
           "detail": { "music": "", "des": "아 피곤쓰" },
@@ -368,7 +334,7 @@
             ""
           ],
           "textColor": "#000000",
-          "title": "달달 무슨달",
+          "title": "덥다 더워",
           "template": 10,
           "img": ""
         },
@@ -424,6 +390,10 @@
     "img": "https://ifh.cc/g/q2s7jx.jpg",
     "diary_name": "Biodex",
     "d-day": 4,
+<<<<<<< Updated upstream
+=======
+    "shareDate": ["2022-07-15", "2022-07-16", "2022-07-17", "2022-07-20"],
+>>>>>>> Stashed changes
     "diary": {
       "user": [
         {
@@ -444,6 +414,27 @@
           ],
           "textColor": "#ffffff",
           "title": "Cookley",
+          "template": "",
+          "img": "https://ifh.cc/g/VCnYGm.jpg"
+        },
+        {
+          "date": "2022-07-16",
+          "weather": "windy",
+          "emotion": "dizzy",
+          "detail": { "music": "", "des": "오늘은 비가 많이 옴" },
+          "text": [
+            "initiative",
+            "",
+            "안녕",
+            "",
+            "어캐할따",
+            "",
+            "",
+            "뭐지",
+            ""
+          ],
+          "textColor": "#ffffff",
+          "title": "하하ㅏ하",
           "template": "",
           "img": "https://ifh.cc/g/VCnYGm.jpg"
         },
@@ -508,9 +499,30 @@
             ""
           ],
           "textColor": "#000000",
-          "title": "달달 무슨달",
+          "title": "ㅋㅋㅋㅋ아이스크림",
           "template": 10,
           "img": ""
+        },
+        {
+          "date": "2022-07-16",
+          "weather": "windy",
+          "emotion": "dizzy",
+          "detail": { "music": "", "des": "오늘은 비가 많이 옴" },
+          "text": [
+            "initiative",
+            "",
+            "안녕",
+            "",
+            "어캐할따",
+            "",
+            "",
+            "뭐지",
+            ""
+          ],
+          "textColor": "#ffffff",
+          "title": "하하ㅏ하",
+          "template": "",
+          "img": "https://ifh.cc/g/VCnYGm.jpg"
         },
         {
           "date": "2022-07-17",

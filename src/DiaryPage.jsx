@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import DiaryImg from "./DiaryImg";
 import DiaryNonImg from "./DiaryNonImg";
+<<<<<<< Updated upstream:src/DiaryPage.jsx
 import { useNavigate } from "react-router-dom";
+=======
+import { useNavigate, useParams } from "react-router-dom";
+import Comment from "./Comment";
+>>>>>>> Stashed changes:src/pages/Diary/DiaryPage.jsx
 
 const DiaryRecord = styled.div`
   width: 1200px;
@@ -80,7 +85,13 @@ const DiaryEdit = styled.div`
   height: 42px;
 `;
 
+<<<<<<< Updated upstream:src/DiaryPage.jsx
 const DiaryPage = ({ diaryPageData }) => {
+=======
+const DiaryPage = ({ diaryPageData, calBtn, setCalBtn, choosePage }) => {
+  const params = useParams();
+  console.log(params);
+>>>>>>> Stashed changes:src/pages/Diary/DiaryPage.jsx
   const oppositeData = diaryPageData.opposite;
   const userData = diaryPageData.user;
   const oppositeDataLast = diaryPageData.opposite.length;
