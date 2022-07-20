@@ -124,7 +124,7 @@ function DiaryTemplate({ setChangeImg, changeFc, fcColor, setFcColor }) {
   };
   const navigate = useNavigate();
   const saveBtn = () => {
-    navigate("../");
+    navigate("/diary");
   };
 
   const onClickFc = (event) => {
@@ -150,7 +150,7 @@ function DiaryTemplate({ setChangeImg, changeFc, fcColor, setFcColor }) {
             <TempImg
               key={list}
               id={list}
-              src={require(`./img/template/${list}.png`)}
+              src={require(`../../img/template/${list}.png`)}
               ref={(temp) => (tempRef.current[list] = temp)}
               onClick={onClick}
             />
@@ -164,7 +164,7 @@ function DiaryTemplate({ setChangeImg, changeFc, fcColor, setFcColor }) {
             <TempImg
               id={list}
               key={list}
-              src={require(`./img/template/${list}.png`)}
+              src={require(`../../img/template/${list}.png`)}
               ref={(temp) => (tempRef.current[list] = temp)}
               onClick={onClick}
             />

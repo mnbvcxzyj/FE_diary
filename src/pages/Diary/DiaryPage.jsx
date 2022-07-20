@@ -2,16 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import DiaryImg from "./DiaryImg";
 import DiaryNonImg from "./DiaryNonImg";
-<<<<<<< Updated upstream:src/DiaryPage.jsx
-import { useNavigate } from "react-router-dom";
-=======
 import { useNavigate, useParams } from "react-router-dom";
 import Comment from "./Comment";
->>>>>>> Stashed changes:src/pages/Diary/DiaryPage.jsx
 
 const DiaryRecord = styled.div`
   width: 1200px;
-  margin: 40px auto 0;
+  margin-top: 130px;
+  margin-left: 40px;
   position: relative;
 `;
 
@@ -71,6 +68,7 @@ const DiaryFooter = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
+  align-items: center;
 `;
 
 const DiaryComment = styled.div`
@@ -85,13 +83,9 @@ const DiaryEdit = styled.div`
   height: 42px;
 `;
 
-<<<<<<< Updated upstream:src/DiaryPage.jsx
-const DiaryPage = ({ diaryPageData }) => {
-=======
 const DiaryPage = ({ diaryPageData, calBtn, setCalBtn, choosePage }) => {
   const params = useParams();
   console.log(params);
->>>>>>> Stashed changes:src/pages/Diary/DiaryPage.jsx
   const oppositeData = diaryPageData.opposite;
   const userData = diaryPageData.user;
   const oppositeDataLast = diaryPageData.opposite.length;
@@ -110,6 +104,8 @@ const DiaryPage = ({ diaryPageData, calBtn, setCalBtn, choosePage }) => {
   const onClick = () => {
     navigate("/diaryadd");
   };
+  // 댓글
+  const [showComment, setShowComment] = useState(false);
   return (
     <DiaryRecord>
       <DiaryBox>
@@ -117,7 +113,7 @@ const DiaryPage = ({ diaryPageData, calBtn, setCalBtn, choosePage }) => {
         <OppositePage
           style={{
             backgroundImage: opData.template
-              ? `url(${require(`./img/template/template${String(
+              ? `url(${require(`../../img/template/template${String(
                   opData.template
                 ).padStart(2, 0)}.png`)})`
               : "",
@@ -140,7 +136,7 @@ const DiaryPage = ({ diaryPageData, calBtn, setCalBtn, choosePage }) => {
         <MyPage
           style={{
             backgroundImage: myData.template
-              ? `url(${require(`./img/template/template${String(
+              ? `url(${require(`../../img/template/template${String(
                   myData.template
                 ).padStart(2, 0)}.png`)})`
               : "",
@@ -186,8 +182,13 @@ const DiaryPage = ({ diaryPageData, calBtn, setCalBtn, choosePage }) => {
           />
         </svg>
       </DiaryRightBtn>
+      {showComment ? <Comment /> : ""}
       <DiaryFooter>
-        <DiaryComment>
+        <DiaryComment
+          onClick={() => {
+            setShowComment(!showComment);
+          }}
+        >
           <svg
             width="46"
             height="41"
@@ -234,6 +235,20 @@ const DiaryPage = ({ diaryPageData, calBtn, setCalBtn, choosePage }) => {
             />
           </svg>
         </DiaryEdit>
+        {calBtn ? (
+          <div
+            onClick={() => {
+              setCalBtn(false);
+              navigate("/diaryremember");
+            }}
+          >
+            <img
+              src={require(`../../img/ImgFive/ant-design_calendar-twotone.png`)}
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </DiaryFooter>
     </DiaryRecord>
   );

@@ -1,10 +1,5 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import React, { useState } from "react";
 import { GlobalStyle } from "./style";
-<<<<<<< Updated upstream
-
-const App = () => {
-=======
 import Header from "./Header";
 
 import Main from "./pages/Main/Main";
@@ -21,13 +16,9 @@ const App = () => {
     diaryPageData = data[choosePage - 1].diary;
   }
   const [calBtn, setCalBtn] = useState();
->>>>>>> Stashed changes
   return (
-    <BrowserRouter>
+    <>
       <GlobalStyle />
-<<<<<<< Updated upstream
-    </BrowserRouter>
-=======
       <Header />
 
       <Routes>
@@ -62,7 +53,6 @@ const App = () => {
         ></Route>
       </Routes>
     </>
->>>>>>> Stashed changes
   );
 };
 

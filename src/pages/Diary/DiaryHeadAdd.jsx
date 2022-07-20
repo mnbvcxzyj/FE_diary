@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import song from "./img/song.png";
+import song from "../../img/song.png";
 
 const DiaryHeader = styled.div`
   height: 87px;
@@ -174,7 +174,7 @@ const weather = [
   { id: "sunny", desKr: "해 쨍쩅" },
 ];
 
-function DiaryHeadAdd({ userData }) {
+function DiaryHeadAdd() {
   //날짜
   const td = new Date();
   const today = new Date(td.getTime() - td.getTimezoneOffset() * 60000)
@@ -243,13 +243,13 @@ function DiaryHeadAdd({ userData }) {
         </InfoDate>
         <InfoIcon>
           <IconImg
-            src={require(`./img/weather/${saveWeather}.png`)}
+            src={require(`../../img/weather/${saveWeather}.png`)}
             onClick={onClickShow}
           />
         </InfoIcon>
         <InfoIcon>
           <IconImg
-            src={require(`./img/emotion/${saveEmotion}.png`)}
+            src={require(`../../img/emotion/${saveEmotion}.png`)}
             onClick={onClickShowEm}
           />
         </InfoIcon>
@@ -270,12 +270,13 @@ function DiaryHeadAdd({ userData }) {
 
             {hover ? (
               <svg
-                width="10"
-                height="10"
+                width="16"
+                height="16"
                 viewBox="0 0 10 10"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 onClick={clickMusicClose}
+                style={{ position: "relative", zIndex: "99" }}
               >
                 <circle cx="5" cy="5" r="5" fill="#D9D9D9" />
                 <path
@@ -284,7 +285,7 @@ function DiaryHeadAdd({ userData }) {
                 />
               </svg>
             ) : (
-              ""
+              <div style={{ width: "15px", height: "15px" }}></div>
             )}
           </InfoMusic>
         )}
@@ -299,7 +300,7 @@ function DiaryHeadAdd({ userData }) {
             <IconContent key={list.id} id={list.id}>
               <IconImgDiv>
                 <IconImg
-                  src={require(`./img/weather/${list.id}.png`)}
+                  src={require(`../../img/weather/${list.id}.png`)}
                   onClick={onClick}
                 />
               </IconImgDiv>
@@ -316,7 +317,7 @@ function DiaryHeadAdd({ userData }) {
             <IconContent key={list.id} id={list.id}>
               <IconImgDiv>
                 <IconImg
-                  src={require(`./img/emotion/${list.id}.png`)}
+                  src={require(`../../img/emotion/${list.id}.png`)}
                   onClick={onClickEm}
                 />
               </IconImgDiv>

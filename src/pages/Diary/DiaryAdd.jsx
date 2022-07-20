@@ -4,8 +4,7 @@ import DiaryHeadAdd from "./DiaryHeadAdd";
 import DiaryTemplate from "./DiaryTemplate";
 
 const DiaryPlus = styled.div`
-  margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 130px;
   display: flex;
   width: 1280px;
 `;
@@ -78,15 +77,15 @@ const AddBtn = styled.div`
   cursor: pointer;
   width: 24px;
   height: 24px;
-  background-image: url(${require("./img/add.png")});
+  background-image: url(${require("../../img/add.png")});
   background-size: contain;
   &:hover {
-    background-image: url(${require("./img/hoverAdd.png")});
+    background-image: url(${require("../../img/hoverAdd.png")});
   }
 `;
 
 const DeleteBtn = styled.div`
-  background-image: url(${require("./img/closeBtn.png")});
+  background-image: url(${require("../../img/closeBtn.png")});
   cursor: pointer;
   width: 24px;
   height: 24px;
@@ -96,15 +95,15 @@ const DeleteBtn = styled.div`
 function DiaryAdd({ userData }) {
   const [changeImg, setChangeImg] = useState();
   const [clickImg, setClickImg] = useState(false);
-  const [imgFile, setImgFile] = useState(require("./img/noimage.png"));
+  const [imgFile, setImgFile] = useState(require("../../img/noimage.png"));
   const [changeFc, setChangeFc] = useState(false);
   const style = {
     backgroundImage: changeImg
-      ? `url(${require(`./img/template/${changeImg}.png`)})`
+      ? `url(${require(`../../img/template/${changeImg}.png`)})`
       : "",
   };
   const onClick = () => {
-    setImgFile(require("./img/noimage.png"));
+    setImgFile(require("../../img/noimage.png"));
     setClickImg(false);
   };
 

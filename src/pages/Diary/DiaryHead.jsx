@@ -68,14 +68,18 @@ function DiaryHead({ writtenData }) {
           <DateDiv>{writtenData.date}</DateDiv>
         </InfoDate>
         <InfoIcon>
-          <IconImg src={require(`./img/weather/${writtenData.weather}.png`)} />
+          <IconImg
+            src={require(`../../img/weather/${writtenData.weather}.png`)}
+          />
         </InfoIcon>
         <InfoIcon>
-          <IconImg src={require(`./img/emotion/${writtenData.emotion}.png`)} />
+          <IconImg
+            src={require(`../../img/emotion/${writtenData.emotion}.png`)}
+          />
         </InfoIcon>
         {writtenData.detail.music ? (
           <InfoMusic>
-            <IconImg src={require("./img/song.png")} />
+            <IconImg src={require("../../img/song.png")} />
             {writtenData.detail.music}
           </InfoMusic>
         ) : (
