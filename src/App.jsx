@@ -11,6 +11,7 @@ import Rem from "./pages/View/rem";
 
 const App = () => {
   const [choosePage, setChoosePage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   let diaryPageData;
   if (choosePage) {
     diaryPageData = data[choosePage - 1].diary;
@@ -36,6 +37,8 @@ const App = () => {
               calBtn={calBtn}
               setCalBtn={setCalBtn}
               choosePage={choosePage}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
           }
         ></Route>
@@ -48,6 +51,7 @@ const App = () => {
               calBtn={calBtn}
               setCalBtn={setCalBtn}
               setChoosePage={setChoosePage}
+              setCurrentPage={setCurrentPage}
             />
           }
         ></Route>

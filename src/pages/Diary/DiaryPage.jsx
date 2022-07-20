@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import DiaryImg from "./DiaryImg";
 import DiaryNonImg from "./DiaryNonImg";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Comment from "./Comment";
 
 const DiaryRecord = styled.div`
@@ -83,13 +83,16 @@ const DiaryEdit = styled.div`
   height: 42px;
 `;
 
-const DiaryPage = ({ diaryPageData, calBtn, setCalBtn, choosePage }) => {
-  const params = useParams();
-  console.log(params);
+const DiaryPage = ({
+  diaryPageData,
+  calBtn,
+  setCalBtn,
+  currentPage,
+  setCurrentPage,
+}) => {
   const oppositeData = diaryPageData.opposite;
   const userData = diaryPageData.user;
   const oppositeDataLast = diaryPageData.opposite.length;
-  const [currentPage, setCurrentPage] = useState(0);
   const myData = userData[currentPage];
   const opData = oppositeData[currentPage];
   const onClickLeft = () => {

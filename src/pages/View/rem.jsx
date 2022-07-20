@@ -176,7 +176,7 @@ const DdayBack = styled.div`
   line-height: 30px;
 `;
 
-const Rem = ({ items, calBtn, setCalBtn, setChoosePage }) => {
+const Rem = ({ items, calBtn, setCalBtn, setChoosePage, setCurrentPage }) => {
   const [value, onChange] = useState(new Date());
   let dataFile = [];
   let dateCollection = [];
@@ -215,6 +215,9 @@ const Rem = ({ items, calBtn, setCalBtn, setChoosePage }) => {
     const diff = Math.abs(todayTime - masTime);
     diffDay = Math.floor(diff / (1000 * 60 * 60 * 24));
     setChoosePage(dataFile[postNum].id);
+    setCurrentPage(
+      dataFile[postNum].shareDate.indexOf(moment(value).format("YYYY-MM-DD"))
+    );
   }
   return (
     <Main>
